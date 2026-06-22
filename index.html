@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Estudio — INI3131 EFT</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary: #7c3aed;
+  --accent: #06b6d4;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --written-color: #4f46e5;
+  --oral-color: #0891b2;
+  --listening-bg: #ede9fe;
+  --reading-bg:   #dbeafe;
+  --writing-bg:   #ffe4e6;
+  --speaking-bg:  #d1fae5;
+  --grammar-bg:   #fef9c3;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
+  min-height: 100vh;
+  padding: 30px 15px;
+  color: var(--text);
+}
+.container {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(79,70,229,0.25);
+  max-width: 920px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  padding: 44px 40px 36px;
+  text-align: center;
+  color: white;
+}
+.header .eyebrow {
+  font-size: 0.72em;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 14px;
+}
+.header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.3em;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.header .subtitle { opacity: 0.85; font-size: 1em; font-weight: 300; margin-bottom: 28px; }
+.weight-banner {
+  display: flex;
+  gap: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 520px;
+  margin: 0 auto;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.weight-half { flex: 1; padding: 14px 18px; text-align: center; }
+.weight-half.written { background: rgba(255,255,255,0.18); }
+.weight-half.oral    { background: rgba(255,255,255,0.10); border-left: 1px solid rgba(255,255,255,0.2); }
+.weight-half .wh-label { font-size: 0.72em; letter-spacing: 2px; text-transform: uppercase; opacity: 0.75; margin-bottom: 4px; }
+.weight-half .wh-pct   { font-family: 'DM Serif Display', serif; font-size: 2em; line-height: 1; }
+.weight-half .wh-sub   { font-size: 0.75em; opacity: 0.7; margin-top: 3px; }
+.weight-note { font-size: 0.75em; opacity: 0.6; margin-top: 12px; }
+
+/* ── NAV BAR ── */
+.nav-bar {
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border);
+}
+.nav-labels {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-labels::-webkit-scrollbar { display: none; }
+.nav-label-cell {
+  padding: 5px 14px;
+  font-size: 0.68em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+}
+.nav-label-cell.written {
+  background: #f0f4ff;
+  color: var(--written-color);
+  border-right: 1px solid #c7d2fe;
+  border-left: 1px solid #c7d2fe;
+}
+.nav-label-cell.oral {
+  background: #ecfeff;
+  color: var(--oral-color);
+  border-right: 1px solid #a5f3fc;
+  border-left: 1px solid #a5f3fc;
+}
+.nav-label-spacer { flex: 1; }
+.nav-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8em;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+  border-bottom: 3px solid transparent;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--primary); background: #f1f5f9; }
+.nav-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: white; }
+.nav-btn.group-written { background: #f0f4ff; color: #6366f1; }
+.nav-btn.group-written:hover { background: #e0e7ff; }
+.nav-btn.group-written.active { background: white; color: var(--primary); border-bottom-color: var(--primary); }
+.written-active .nav-btn.group-written:not(.active) { background: #e0e7ff; color: var(--primary); }
+.nav-btn.group-oral { background: #ecfeff; color: #0891b2; }
+.nav-btn.group-oral:hover { background: #cffafe; }
+.nav-btn.group-oral.active { background: white; color: #0891b2; border-bottom-color: #0891b2; }
+.oral-active .nav-btn.group-oral:not(.active) { background: #cffafe; color: #0891b2; }
+.nav-sep { width: 1px; background: var(--border); margin: 6px 0; flex-shrink: 0; }
+
+/* ── CONTENT ── */
+.content { padding: 36px 40px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: linear-gradient(135deg, #f0f4ff, #faf5ff);
+  border: 1px solid #c4b5fd;
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  font-size: 0.92em;
+  line-height: 1.75;
+  color: #3730a3;
+}
+
+/* ── SECTION TITLE ── */
+.section-title { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.section-icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4em; flex-shrink: 0;
+}
+.icon-listening { background: var(--listening-bg); }
+.icon-reading   { background: var(--reading-bg); }
+.icon-writing   { background: var(--writing-bg); }
+.icon-speaking  { background: var(--speaking-bg); }
+.icon-grammar   { background: var(--grammar-bg); }
+.icon-overview  { background: #e0f2fe; }
+.icon-calc      { background: #fce7f3; }
+.icon-checklist { background: #f0fdf4; }
+.section-title h2 { font-family: 'DM Serif Display', serif; font-size: 1.6em; color: var(--text); line-height: 1.2; }
+.section-title .pts-badge {
+  margin-left: auto; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 20px; padding: 5px 14px; font-size: 0.82em;
+  font-weight: 700; color: var(--primary); white-space: nowrap;
+}
+
+/* ── ACCORDION ── */
+.accordion { margin-bottom: 12px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.accordion-header {
+  width: 100%; display: flex; align-items: center; gap: 12px;
+  padding: 15px 20px; background: #f8fafc; border: none;
+  cursor: pointer; text-align: left;
+  font-family: 'DM Sans', sans-serif; font-size: 0.93em; font-weight: 600;
+  color: var(--text); transition: background 0.18s;
+}
+.accordion-header:hover { background: #f1f5f9; }
+.accordion-header.open { background: white; border-bottom: 1px solid var(--border); }
+.accordion-tag {
+  font-size: 0.7em; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 3px 9px; border-radius: 4px; flex-shrink: 0;
+}
+.tag-listening { background: var(--listening-bg); color: var(--secondary); }
+.tag-reading   { background: var(--reading-bg);   color: #1d4ed8; }
+.tag-writing   { background: var(--writing-bg);   color: #be123c; }
+.tag-speaking  { background: var(--speaking-bg);  color: #065f46; }
+.tag-grammar   { background: var(--grammar-bg);   color: #92400e; }
+.tag-tip       { background: #e0f2fe;              color: #0369a1; }
+.accordion-chevron { margin-left: auto; font-size: 0.85em; color: var(--muted); transition: transform 0.25s; flex-shrink: 0; }
+.accordion-header.open .accordion-chevron { transform: rotate(180deg); }
+.accordion-body { display: none; padding: 22px 24px; background: white; font-size: 0.92em; line-height: 1.75; color: var(--text); }
+.accordion-body.open { display: block; }
+
+/* ── CONTENT ELEMENTS ── */
+.acc-p { margin-bottom: 14px; }
+.acc-p:last-child { margin-bottom: 0; }
+.tip-box {
+  background: #eff6ff; border: 1px solid #bfdbfe;
+  border-left: 4px solid var(--accent); border-radius: 8px;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.9em; color: #1e40af; line-height: 1.65;
+}
+.tip-box .tip-label { font-weight: 700; text-transform: uppercase; font-size: 0.7em; letter-spacing: 1px; margin-bottom: 6px; color: var(--accent); }
+.warning-box {
+  background: #fffbeb; border: 1px solid #fde68a;
+  border-left: 4px solid var(--warning); border-radius: 8px;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.9em; color: #92400e; line-height: 1.65;
+}
+.warning-box .tip-label { color: var(--warning); font-weight: 700; text-transform: uppercase; font-size: 0.7em; letter-spacing: 1px; margin-bottom: 6px; }
+.example-box {
+  background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 0.9em; line-height: 1.7;
+}
+.example-box .ex-label { font-weight: 700; font-size: 0.7em; letter-spacing: 1px; text-transform: uppercase; color: var(--success); margin-bottom: 6px; }
+.ex-good { color: #15803d; font-weight: 600; }
+.ex-bad  { color: #b91c1c; }
+.ex-note { color: var(--muted); font-style: italic; }
+.critical-box {
+  background: #fef2f2; border: 1px solid #fca5a5;
+  border-left: 4px solid #ef4444; border-radius: 8px;
+  padding: 14px 18px; margin: 14px 0; font-size: 0.9em; color: #7f1d1d; line-height: 1.65;
+}
+.critical-box .tip-label { color: #ef4444; font-weight: 700; text-transform: uppercase; font-size: 0.7em; letter-spacing: 1px; margin-bottom: 6px; }
+
+/* Steps list */
+.steps-list { counter-reset: step-counter; list-style: none; margin: 10px 0 14px; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; font-size: 0.92em; }
+.steps-list li::before {
+  content: counter(step-counter); background: var(--primary); color: white;
+  font-size: 0.75em; font-weight: 700; width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.bullet-list { list-style: none; margin: 10px 0 14px; padding: 0; }
+.bullet-list li { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; line-height: 1.6; font-size: 0.92em; }
+.bullet-list li::before { content: '→'; color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+/* ── TABLES ── */
+.grammar-table { width: 100%; border-collapse: collapse; font-size: 0.88em; margin: 14px 0; }
+.grammar-table th { background: #f1f5f9; padding: 9px 14px; text-align: left; font-weight: 700; color: var(--text); border-bottom: 2px solid var(--border); }
+.grammar-table td { padding: 9px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+.grammar-table tr:last-child td { border-bottom: none; }
+.grammar-table tr:hover td { background: #fafafa; }
+.grammar-table .form { font-family: 'DM Serif Display', serif; color: var(--secondary); }
+.grammar-table .use  { color: var(--muted); font-size: 0.9em; }
+.grammar-table .eg   { color: #1d4ed8; font-style: italic; }
+.rubric-table {
+  width: 100%; border-collapse: collapse; font-size: 0.83em; margin: 14px 0;
+  border-radius: 10px; overflow: hidden; border: 1px solid var(--border);
+  table-layout: fixed;
+}
+.rubric-table th { background: linear-gradient(135deg, #f0fdf4, #dcfce7); padding: 10px 12px; text-align: center; font-weight: 700; color: #065f46; border-bottom: 1px solid #86efac; font-size: 0.83em; }
+.rubric-table th:first-child { text-align: left; width: 20%; }
+.rubric-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.45; }
+.rubric-table tr:last-child td { border-bottom: none; }
+.rubric-table td:first-child { font-weight: 700; color: var(--secondary); font-size: 0.84em; }
+.rubric-tl { background: #f0fdf4; } .rubric-l { background: #f7fdf9; }
+.rubric-pl { background: #fffbeb; } .rubric-il { background: #fff7ed; }
+.rubric-nl { background: #fef2f2; }
+
+/* ── EXAM SPLIT (PANORAMA) ── */
+.exam-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0; }
+.exam-half { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+.exam-half-header {
+  padding: 14px 18px; display: flex; align-items: center; justify-content: space-between;
+}
+.exam-half-header.written { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+.exam-half-header.oral    { background: linear-gradient(135deg, #cffafe, #a5f3fc); }
+.exam-half-header h3 { font-family: 'DM Serif Display', serif; font-size: 1.05em; color: var(--text); }
+.exam-half-header .big-pct { font-family: 'DM Serif Display', serif; font-size: 1.8em; color: var(--secondary); line-height: 1; }
+.exam-half-header.oral .big-pct { color: #0891b2; }
+.exam-half-body { padding: 14px 18px; }
+.exam-half-body ul { list-style: none; padding: 0; }
+.exam-half-body ul li { font-size: 0.87em; padding: 6px 0; border-bottom: 1px solid var(--border); color: var(--muted); display: flex; justify-content: space-between; }
+.exam-half-body ul li:last-child { border-bottom: none; }
+.exam-half-body ul li strong { color: var(--text); }
+.time-block { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin: 18px 0; }
+.time-block h4 { font-family: 'DM Serif Display', serif; font-size: 1.05em; color: var(--secondary); margin-bottom: 12px; }
+.time-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+.time-row:last-child { border-bottom: none; font-weight: 700; }
+.time-row .tr-time { color: var(--secondary); font-weight: 600; }
+.part-divider { border: none; border-top: 2px dashed var(--border); margin: 26px 0; }
+
+/* ── CALCULATOR ── */
+.calc-card {
+  background: linear-gradient(135deg, #fdf4ff, #fae8ff);
+  border: 1px solid #e879f9; border-radius: 16px; padding: 28px; margin: 22px 0;
+}
+.calc-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.3em; color: #701a75; margin-bottom: 6px; }
+.calc-card .calc-sub { font-size: 0.85em; color: #9333ea; margin-bottom: 22px; }
+.calc-formula {
+  background: white; border: 1px solid #e9d5ff; border-radius: 10px;
+  padding: 12px 16px; font-size: 0.82em; color: var(--muted);
+  margin-bottom: 18px; line-height: 1.6; font-family: monospace;
+}
+.calc-formula strong { color: var(--secondary); }
+.calc-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.calc-field label { display: block; font-size: 0.78em; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.calc-field .field-pct { font-size: 0.7em; font-weight: 400; color: var(--primary); text-transform: none; letter-spacing: 0; display: block; margin-top: 1px; }
+.calc-field input[type="number"] {
+  width: 100%; padding: 10px 12px; border: 2px solid #e9d5ff; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 1em; font-weight: 600; color: var(--text);
+  background: white; transition: border-color 0.2s;
+  -moz-appearance: textfield;
+}
+.calc-field input[type="number"]::-webkit-outer-spin-button,
+.calc-field input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.calc-field input[type="number"]:focus { outline: none; border-color: var(--secondary); }
+.calc-result {
+  background: white; border-radius: 12px; padding: 20px 22px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.calc-result-num { font-family: 'DM Serif Display', serif; font-size: 3.2em; line-height: 1; color: var(--primary); min-width: 90px; transition: color 0.3s; }
+.calc-result-info { flex: 1; min-width: 160px; }
+.calc-result-label { font-size: 0.82em; color: var(--muted); margin-bottom: 4px; }
+.calc-result-msg { font-weight: 700; font-size: 0.95em; color: var(--text); }
+.calc-breakdown { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+.calc-bd-item { background: #f8fafc; border-radius: 8px; padding: 10px 12px; text-align: center; font-size: 0.82em; }
+.calc-bd-item .bd-label { color: var(--muted); margin-bottom: 3px; }
+.calc-bd-item .bd-val { font-weight: 700; color: var(--text); font-size: 1.05em; }
+.calc-bd-item .bd-contribution { font-size: 0.8em; color: var(--primary); margin-top: 2px; }
+
+/* ── VERB GRID ── */
+.verb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px,1fr)); gap: 8px; margin: 12px 0; }
+.verb-card { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 0.83em; text-align: center; }
+.verb-card .base { color: var(--muted); font-size: 0.82em; }
+.verb-card .past { color: var(--primary); font-weight: 700; }
+
+/* ── STRUCTURE BOX ── */
+.structure-box {
+  background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+  border: 1px solid #c4b5fd; border-radius: 10px;
+  padding: 14px 18px; margin: 12px 0; font-family: monospace;
+  font-size: 0.88em; color: var(--secondary); line-height: 1.8;
+}
+
+/* ── CHECKLIST ── */
+.checklist-section { margin-bottom: 26px; }
+.checklist-section h3 { font-family: 'DM Serif Display', serif; font-size: 1.1em; color: var(--text); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px dashed var(--border); }
+.check-item {
+  display: flex; align-items: flex-start; gap: 12px; padding: 11px 14px;
+  border-radius: 10px; margin-bottom: 7px; background: #fafafa;
+  border: 1px solid var(--border); cursor: pointer; transition: all 0.18s; user-select: none;
+}
+.check-item:hover { background: #f1f5f9; }
+.check-item.checked { background: #f0fdf4; border-color: #6ee7b7; }
+.check-item input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--success); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+.check-item .ci-text { font-size: 0.9em; line-height: 1.5; color: var(--text); flex: 1; }
+.check-item.checked .ci-text { color: var(--muted); text-decoration: line-through; }
+.check-item .ci-badge { margin-left: auto; font-size: 0.7em; font-weight: 700; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; }
+.badge-l { background: var(--listening-bg); color: var(--secondary); }
+.badge-r { background: var(--reading-bg);   color: #1d4ed8; }
+.badge-w { background: var(--writing-bg);   color: #be123c; }
+.badge-s { background: var(--speaking-bg);  color: #065f46; }
+.badge-g { background: var(--grammar-bg);   color: #92400e; }
+.progress-bar-wrap { background: var(--bg); border-radius: 12px; padding: 14px 18px; margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+.progress-bar-track { flex: 1; height: 10px; background: var(--border); border-radius: 10px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 10px; transition: width 0.4s ease; width: 0%; }
+.progress-label { font-size: 0.83em; font-weight: 600; color: var(--muted); white-space: nowrap; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .content { padding: 22px 18px; }
+  .header { padding: 28px 20px 22px; }
+  .header h1 { font-size: 1.7em; }
+  .exam-split { grid-template-columns: 1fr; }
+  .calc-inputs { grid-template-columns: 1fr; }
+  .calc-breakdown { grid-template-columns: 1fr; }
+  .nav-btn { font-size: 0.72em; padding: 9px 6px; }
+  .weight-banner { max-width: 100%; }
+  .rubric-table { font-size: 0.72em; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="eyebrow">DuocUC · INI3131 · Inglés Elemental Intensivo COMEX · Nivel A2</div>
+  <h1>Guía de Estudio<br>Examen Final Transversal</h1>
+  <p class="subtitle">Prepara todas las habilidades del EFT: examen escrito y oral</p>
+  <div class="weight-banner">
+    <div class="weight-half written">
+      <div class="wh-label">Examen Escrito</div>
+      <div class="wh-pct">30%</div>
+      <div class="wh-sub">de tu nota final</div>
+    </div>
+    <div class="weight-half oral">
+      <div class="wh-label">Examen Oral</div>
+      <div class="wh-pct">10%</div>
+      <div class="wh-sub">de tu nota final</div>
+    </div>
+  </div>
+  <div class="weight-note">El EFT completo vale 40% · Tu promedio semestral vale 60%</div>
+</div>
+
+<!-- ══ NAV BAR ══ -->
+<div class="nav-bar">
+  <div class="nav-labels">
+    <div class="nav-label-spacer"></div>
+    <div class="nav-label-cell written">📝 Escrito · 30% nota final</div>
+    <div class="nav-label-cell oral">🎤 Oral · 10% nota final</div>
+    <div class="nav-label-spacer"></div>
+  </div>
+  <div class="nav-tabs" id="navTabs">
+    <button class="nav-btn active"       onclick="showTab('overview',    this)">📋 Panorama</button>
+    <button class="nav-btn"              onclick="showTab('calc',        this)">🧮 Calculadora</button>
+    <div class="nav-sep"></div>
+    <button class="nav-btn group-written" onclick="showTab('listening',  this)">🎧 Listening</button>
+    <button class="nav-btn group-written" onclick="showTab('reading',    this)">📖 Reading</button>
+    <button class="nav-btn group-written" onclick="showTab('writing',    this)">✍️ Writing</button>
+    <div class="nav-sep"></div>
+    <button class="nav-btn group-oral"   onclick="showTab('speaking',    this)">🎤 Speaking</button>
+    <div class="nav-sep"></div>
+    <button class="nav-btn"              onclick="showTab('grammar',     this)">⚙️ Gramática</button>
+    <button class="nav-btn"              onclick="showTab('checklist',   this)">☑️ Checklist</button>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ══════════════════════════════════════
+     PANORAMA
+══════════════════════════════════════ -->
+<div id="tab-overview" class="tab-panel active">
+  <div class="section-title">
+    <div class="section-icon icon-overview">📋</div>
+    <h2>Panorama general del examen</h2>
+  </div>
+
+  <div class="intro-box">
+    Esta guía te ayuda a <strong>prepararte</strong> para el EFT desarrollando las habilidades que evalúa cada sección. Usa los tabs para explorar estrategias, gramática y la rúbrica oficial antes del examen.
+  </div>
+
+  <div class="exam-split">
+    <div class="exam-half">
+      <div class="exam-half-header written">
+        <h3>📝 Examen Escrito</h3>
+        <span class="big-pct">30%</span>
+      </div>
+      <div class="exam-half-body">
+        <ul>
+          <li><span>Duración</span><strong>60 minutos</strong></li>
+          <li><span>🎧 Listening</span><strong>12 pts · 2 partes</strong></li>
+          <li><span>📖 Reading</span><strong>12 pts · 2 partes</strong></li>
+          <li><span>✍️ Writing</span><strong>12 pts · mín. 60 palabras</strong></li>
+          <li><span>Total</span><strong>36 puntos</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="exam-half">
+      <div class="exam-half-header oral">
+        <h3>🎤 Examen Oral</h3>
+        <span class="big-pct" style="color:#0891b2">10%</span>
+      </div>
+      <div class="exam-half-body">
+        <ul>
+          <li><span>Part 1</span><strong>Individual · tarea profesional</strong></li>
+          <li><span>Part 2</span><strong>Pareja · interacción</strong></li>
+          <li><span>Total</span><strong>12 puntos</strong></li>
+          <li><span>Formato</span><strong>Presencial, cara a cara</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <h4>⏱️ Distribución sugerida del tiempo — Examen Escrito (60 min)</h4>
+    <div class="time-row"><span>🎧 Listening — escuchar y completar respuestas</span><span class="tr-time">~20 min</span></div>
+    <div class="time-row"><span>📖 Reading — leer y responder preguntas</span><span class="tr-time">~20 min</span></div>
+    <div class="time-row"><span>✍️ Writing — planificar, escribir y revisar</span><span class="tr-time">~20 min</span></div>
+    <div class="time-row"><span>Total</span><span class="tr-time">60 min</span></div>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-label">💡 Estrategia global</div>
+    Lee <strong>todas las preguntas antes</strong> de escuchar el audio o leer el texto. En Listening, anticipa qué información buscar. En Reading, ubica las respuestas más rápido. En Writing, reserva los últimos 3 minutos para revisar tiempos verbales y contar palabras.
+  </div>
+
+  <div class="critical-box">
+    <div class="tip-label">⚠️ Reglas que afectan directamente tu puntaje</div>
+    🔴 <strong>Doble marca en selección múltiple:</strong> si marcas dos alternativas, la respuesta queda <strong>anulada</strong> aunque una sea correcta.<br>
+    🔴 <strong>Materiales obligatorios:</strong> lápiz de pasta, lápiz grafito y corrector líquido.<br>
+    🔴 <strong>Writing:</strong> escribe <strong>al menos 60 palabras</strong> con ideas originales — no copies el texto del estímulo.<br>
+    🔴 <strong>Dispositivos electrónicos:</strong> no están permitidos durante la evaluación.
+  </div>
+
+  <div class="part-divider"></div>
+
+  <div class="section-title" style="margin-bottom:16px;">
+    <div class="section-icon icon-speaking">🎤</div>
+    <h2 style="font-size:1.2em;">Estructura del Examen Oral</h2>
+  </div>
+  <div class="grammar-table" style="margin-top:0;">
+    <table class="grammar-table">
+      <thead><tr><th>Parte</th><th>Formato</th><th>Tarea</th><th>Gramática clave</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="form">Part 1 — Individual</td>
+          <td>Hablas tú solo/a</td>
+          <td>Describir formación académica y experiencia profesional con datos de una tarjeta</td>
+          <td>Simple past</td>
+        </tr>
+        <tr>
+          <td class="form">Part 2 — Interacción</td>
+          <td>Conversación en pareja</td>
+          <td>Presentarse, hablar de rutina diaria, semana pasada y próxima semana</td>
+          <td>Simple present · Simple past · Be going to</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CALCULADORA
+══════════════════════════════════════ -->
+<div id="tab-calc" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-calc">🧮</div>
+    <h2>Calculadora de nota final</h2>
+  </div>
+
+  <div class="calc-card">
+    <h3>🧮 Simula tu nota del EFT</h3>
+    <p class="calc-sub">Ingresa tus tres notas para calcular tu nota final estimada.</p>
+    <div class="calc-formula">
+      Nota final = (Promedio × <strong>0,6</strong>) + (Escrito × <strong>0,3</strong>) + (Oral × <strong>0,1</strong>)
+    </div>
+    <div class="calc-inputs">
+      <div class="calc-field">
+        <label>Promedio semestral<span class="field-pct">Peso: 60%</span></label>
+        <input type="number" id="calcPromedio" min="1.0" max="7.0" step="0.1" value="5.0" oninput="calcNota()">
+      </div>
+      <div class="calc-field">
+        <label>Nota examen escrito<span class="field-pct">Peso: 30%</span></label>
+        <input type="number" id="calcEscrito"  min="1.0" max="7.0" step="0.1" value="5.0" oninput="calcNota()">
+      </div>
+      <div class="calc-field">
+        <label>Nota examen oral<span class="field-pct">Peso: 10%</span></label>
+        <input type="number" id="calcOral"     min="1.0" max="7.0" step="0.1" value="5.0" oninput="calcNota()">
+      </div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-num" id="calcResultNum">—</div>
+      <div class="calc-result-info">
+        <div class="calc-result-label">Nota final estimada · escala chilena (60% del máx = 4,0)</div>
+        <div class="calc-result-msg" id="calcResultMsg"></div>
+      </div>
+      <div class="calc-breakdown">
+        <div class="calc-bd-item"><div class="bd-label">Promedio × 0,6</div><div class="bd-val" id="bdProm">—</div><div class="bd-contribution" id="bdPromC">—</div></div>
+        <div class="calc-bd-item"><div class="bd-label">Escrito × 0,3</div><div class="bd-val" id="bdEsc">—</div><div class="bd-contribution" id="bdEscC">—</div></div>
+        <div class="calc-bd-item"><div class="bd-label">Oral × 0,1</div><div class="bd-val" id="bdOral">—</div><div class="bd-contribution" id="bdOralC">—</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <div class="tip-label">⚠️ Calculadora orientativa</div>
+    Esta es una <strong>estimación</strong> basada en la fórmula oficial. Tu nota final depende de la corrección definitiva del profesor y del redondeo institucional.
+  </div>
+  <div class="tip-box">
+    <div class="tip-label">💡 ¿Cómo se calcula la nota desde el puntaje bruto?</div>
+    El examen escrito tiene 36 puntos. El 60% del máximo (21,6 pts) equivale a nota 4,0. Cada punto adicional sube la nota hasta 7,0 en 36/36 puntos.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     LISTENING
+══════════════════════════════════════ -->
+<div id="tab-listening" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-listening">🎧</div>
+    <h2>Listening</h2>
+    <span class="pts-badge">12 pts · 2 partes</span>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-listening">Part A</span>
+      Completar espacios en blanco (6 pts)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <p class="acc-p">Escucharás un podcast o audio informativo sobre comercio exterior. Debes completar <strong>6 espacios en blanco</strong> con la información exacta del audio: datos numéricos, porcentajes, comparaciones o adjetivos específicos.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">🔎 Qué tipo de información buscar</div>
+        <ul class="bullet-list">
+          <li><strong>Números y porcentajes:</strong> escucha "percent", "by", "of" como señales</li>
+          <li><strong>Comparativos:</strong> palabras como "than", "more", "-er" te indican comparación</li>
+          <li><strong>Superlativos:</strong> "the most", "the -est", "ever" señalan el superlativo</li>
+          <li><strong>Adjetivos:</strong> palabras que describen calidad, tamaño o impacto</li>
+          <li><strong>Nombres propios:</strong> empresas, países, años — escucha el énfasis en la pronunciación</li>
+        </ul>
+      </div>
+
+      <p style="font-weight:700; margin-bottom:8px;">Estrategia paso a paso:</p>
+      <ol class="steps-list">
+        <li>Lee el texto guía con los espacios en blanco <strong>antes de que empiece el audio</strong>.</li>
+        <li>Identifica el tipo de dato que esperas en cada espacio (¿número? ¿adjetivo? ¿nombre?).</li>
+        <li>Durante la 1ª reproducción, escribe lo que escuchas directamente — aunque no estés 100% seguro.</li>
+        <li>Durante la 2ª reproducción, verifica y completa los espacios dudosos.</li>
+      </ol>
+
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Errores frecuentes en Part A</div>
+        <span class="ex-bad">✗ Parafrasear:</span> poner "very good" cuando el audio dice "excellent" — escribe la palabra exacta.<br>
+        <span class="ex-bad">✗ No leer antes:</span> escuchar sin saber qué buscar — siempre lee primero.<br>
+        <span class="ex-bad">✗ Ignorar la 2ª reproducción:</span> siempre úsala para verificar los espacios incompletos.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-listening">Part B</span>
+      Selección múltiple — presentación formal (6 pts)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p">Escucharás una presentación formal (ej. plan anual de una empresa). Debes elegir la opción correcta (a, b o c) en <strong>6 preguntas de selección múltiple</strong>. Las preguntas siguen el orden del audio.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Trampas frecuentes en selección múltiple</div>
+        <ul class="bullet-list">
+          <li>El audio puede <strong>mencionar la opción incorrecta primero</strong> — espera la información completa.</li>
+          <li>Dos opciones suelen ser similares — busca el detalle que las diferencia (un mes, una acción, un adjetivo).</li>
+          <li>Una opción puede ser <strong>parcialmente correcta</strong> — la acción correcta pero el tiempo equivocado.</li>
+        </ul>
+      </div>
+
+      <p style="font-weight:700; margin-bottom:8px;">Estrategia paso a paso:</p>
+      <ol class="steps-list">
+        <li>Lee las 6 preguntas y <strong>todas sus opciones</strong> antes de que empiece el audio.</li>
+        <li>Subraya mentalmente la diferencia entre las opciones de cada pregunta.</li>
+        <li>Durante la 1ª reproducción, marca la opción que crees correcta — sigue el flujo del audio.</li>
+        <li>Usa la 2ª reproducción para confirmar y corregir las respuestas dudosas.</li>
+      </ol>
+
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Errores frecuentes en Part B</div>
+        <span class="ex-bad">✗ Elegir lo primero que mencionan:</span> el audio puede decir "not in March, but in July" — la respuesta es July, no March.<br>
+        <span class="ex-bad">✗ No leer antes:</span> perder tiempo buscando las opciones mientras suena el audio.<br>
+        <span class="ex-bad">✗ No confirmar en la 2ª reproducción:</span> especialmente cuando dos opciones suenan similares.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     READING
+══════════════════════════════════════ -->
+<div id="tab-reading" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-reading">📖</div>
+    <h2>Reading</h2>
+    <span class="pts-badge">12 pts · 2 partes</span>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-reading">Part A</span>
+      Emparejar descripciones con cargos (6 pts)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <p class="acc-p">Leerás <strong>6 descripciones de puestos de trabajo</strong> y deberás asignar el título correcto a cada una desde una lista de opciones en el área del comercio exterior y logística portuaria.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">🔎 Qué buscar en cada descripción</div>
+        <ul class="bullet-list">
+          <li><strong>¿Dónde trabaja?</strong> inside / outside / port / warehouse / office / government</li>
+          <li><strong>¿Qué hace?</strong> drives / checks / coordinates / manages / receives / inspects</li>
+          <li><strong>¿A quién reporta o quién le reporta?</strong></li>
+          <li><strong>¿Es empleado del gobierno?</strong> → Customs Officer</li>
+        </ul>
+      </div>
+
+      <p style="font-weight:700; margin-bottom:8px;">Palabras clave por tipo de cargo (patrones generales):</p>
+      <table class="grammar-table">
+        <thead><tr><th>Característica en el texto</th><th>Cargo probable</th></tr></thead>
+        <tbody>
+          <tr><td>"drives a vehicle with a lift"</td><td class="form">Forklift Operator</td></tr>
+          <tr><td>"government employee" + "checks documents and inspects cargo"</td><td class="form">Customs Officer</td></tr>
+          <tr><td>"manages ships" + "gives instructions to coordinators"</td><td class="form">Harbor Supervisor</td></tr>
+          <tr><td>"organizes and monitors loading" + "reports to the supervisor"</td><td class="form">Port Operations Coordinator</td></tr>
+          <tr><td>"outside at the docks" + "helps load and unload"</td><td class="form">Port Worker</td></tr>
+          <tr><td>"inside a large building" + "receives, stores, organizes goods"</td><td class="form">Warehouse Worker</td></tr>
+        </tbody>
+      </table>
+
+      <ol class="steps-list">
+        <li>Lee todos los títulos de cargo disponibles antes de empezar.</li>
+        <li>Lee cada descripción buscando las preguntas clave (¿dónde? ¿qué hace? ¿a quién reporta?).</li>
+        <li>Asigna los que estás seguro primero — esos quedan eliminados para los demás.</li>
+        <li>Usa eliminación para los más difíciles.</li>
+      </ol>
+
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Errores frecuentes en Part A</div>
+        <span class="ex-bad">✗ Elegir por una sola palabra:</span> ver "cargo" y asignar el primer cargo que recuerdas — lee la descripción completa.<br>
+        <span class="ex-bad">✗ Confundir jerarquías:</span> el Supervisor da instrucciones al Coordinator; el Coordinator reporta al Supervisor — no al revés.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-reading">Part B</span>
+      Preguntas abiertas sobre un texto (6 pts)
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p">Leerás un texto en primera persona (un profesional del sector describe su rutina diaria). Luego responderás <strong>5 preguntas abiertas</strong> en inglés usando la información del texto.</p>
+
+      <table class="grammar-table">
+        <thead><tr><th>Tipo de pregunta</th><th>Qué se espera</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="form">Tabla de horario (2 pts)</td>
+            <td>Completar 4 celdas: 2 actividades de mañana + 2 de tarde, con hora y descripción. <strong>No uses el ejemplo dado</strong>.</td>
+          </tr>
+          <tr>
+            <td class="form">Preguntas de información (1 pt c/u)</td>
+            <td>Extraer datos del texto · 1–2 ideas completas · Responder en inglés con sujeto + verbo.</td>
+          </tr>
+          <tr>
+            <td class="form">Pregunta de opinión + justificación (1 pt)</td>
+            <td>Dar tu opinión (yes/no) + razón con información del texto. Una respuesta sola sin justificación no obtiene el punto completo.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplo de pregunta de opinión — respuesta correcta</div>
+        <div class="ex-line"><span class="ex-good">Yes, I think he eats healthy food because he usually eats fruit and vegetables with his meals.</span></div>
+        <div class="ex-line"><span class="ex-bad">✗ Incorrecto: "Yes, healthy." — falta justificación</span></div>
+      </div>
+
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Errores frecuentes en Part B</div>
+        <span class="ex-bad">✗ Olvidar la tercera persona -s:</span> "He manage the team." → "He <strong>manages</strong> the team."<br>
+        <span class="ex-bad">✗ Copiar el ejemplo de la tabla:</span> ese horario ya está marcado — busca otros en el texto narrativo.<br>
+        <span class="ex-bad">✗ Responder en español:</span> todas las respuestas de Reading B van en inglés.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     WRITING
+══════════════════════════════════════ -->
+<div id="tab-writing" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-writing">✍️</div>
+    <h2>Writing</h2>
+    <span class="pts-badge">12 pts · mín. 60 palabras</span>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-writing">Estrategia</span>
+      Cómo estructurar el reporte
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <p class="acc-p">Debes escribir un reporte sobre una empresa usando los datos de una tabla. El reporte combina tres tiempos verbales, cada uno con un propósito distinto:</p>
+
+      <table class="grammar-table">
+        <thead><tr><th>Parte del reporte</th><th>Tiempo verbal</th><th>Qué incluir</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="form">1. Situación actual</td>
+            <td class="eg">Simple present + comparativos / superlativos</td>
+            <td>Describe la empresa, sus productos. ¿Cuál es el más popular? ¿Cuál vende más? ¿Cuál ha bajado?</td>
+          </tr>
+          <tr>
+            <td class="form">2. Cambios pasados</td>
+            <td class="eg">Simple past</td>
+            <td>Qué hizo la empresa el año anterior, qué campaña lanzó, cómo cambiaron las ventas</td>
+          </tr>
+          <tr>
+            <td class="form">3. Planes futuros</td>
+            <td class="eg">Be going to</td>
+            <td>Qué va a hacer la empresa para crecer, qué va a enfocar, qué mercados va a explorar</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="critical-box">
+        <div class="tip-label">🔴 Regla crítica</div>
+        El examen indica: <strong>"Use original ideas ONLY. Do not copy ideas from this test."</strong><br>
+        No copies el texto del estímulo. Usa los datos de la tabla para construir tus propias oraciones.
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">💡 Cómo contar palabras</div>
+        Cuenta todas las palabras: artículos (a, an, the), preposiciones, contracciones (it's = 1 palabra). <strong>Mínimo exigido: 60 palabras.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-writing">Frases</span>
+      Estructuras útiles para el reporte
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p" style="color:var(--muted); font-size:0.88em;">Estos son patrones de lenguaje A2 aplicables a cualquier reporte de negocio. Los ejemplos no replican el contenido del examen real.</p>
+
+      <p style="font-weight:700; margin:12px 0 6px;">📊 Simple present — situación actual:</p>
+      <div class="example-box">
+        The company <strong>exports</strong> high-quality products to international markets.<br>
+        Their best-selling category <strong>represents</strong> 27% of total sales.<br>
+        Sales <strong>show</strong> a positive trend this year.
+      </div>
+
+      <p style="font-weight:700; margin:12px 0 6px;">⏮️ Simple past — cambios anteriores:</p>
+      <div class="example-box">
+        Last year, the company <strong>launched</strong> a marketing campaign.<br>
+        Sales <strong>increased</strong> by 15% compared to the previous year.<br>
+        One category <strong>decreased</strong> by 7%, which <strong>was</strong> a concern.
+      </div>
+
+      <p style="font-weight:700; margin:12px 0 6px;">🔮 Be going to — planes futuros:</p>
+      <div class="example-box">
+        The company <strong>is going to</strong> expand its product line next year.<br>
+        They <strong>are going to</strong> focus on their most popular category.<br>
+        The marketing team <strong>is going to</strong> launch a new campaign.
+      </div>
+
+      <p style="font-weight:700; margin:12px 0 6px;">⚖️ Comparativos y superlativos:</p>
+      <div class="example-box">
+        Product A <strong>is more popular than</strong> Product B.<br>
+        Q1 2025 sales are <strong>higher than</strong> Q1 2024.<br>
+        This category showed <strong>the strongest</strong> performance of all products.<br>
+        Their results are <strong>better than</strong> the previous quarter.
+      </div>
+
+      <p style="font-weight:700; margin:12px 0 6px;">🔗 Conectores útiles:</p>
+      <div class="example-box">
+        <strong>However,</strong> some categories decreased this year.<br>
+        <strong>In addition,</strong> the company plans to expand internationally.<br>
+        <strong>Although</strong> one product decreased, total sales grew.<br>
+        <strong>On the other hand,</strong> clementines showed strong growth.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-writing">Rúbrica</span>
+      Rúbrica oficial de Writing
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p" style="color:var(--muted); font-size:0.88em;">Esta es la rúbrica oficial que usa el profesor. Léela antes de escribir para saber exactamente qué evalúa cada criterio.</p>
+      <div style="overflow-x:auto;">
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>Totalmente Logrado</th>
+            <th>Logrado</th>
+            <th>Parcialmente Logrado</th>
+            <th>Insuf. Logrado</th>
+            <th>No Logrado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Coherencia y Extensión<br><small style="font-weight:400;color:var(--muted)">4 pts</small></td>
+            <td class="rubric-tl"><strong>4 pts</strong><br>≥60 palabras, todas las ideas, coherente con el estímulo.</td>
+            <td class="rubric-l"><strong>3,2 pts</strong><br>50–59 palabras, todas las ideas, coherente.</td>
+            <td class="rubric-pl"><strong>2,4 pts</strong><br>30–49 palabras, cobertura parcial y/o alguna incoherencia.</td>
+            <td class="rubric-il"><strong>1,2 pts</strong><br>15–29 palabras, baja cobertura.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>&lt;15 palabras o incoherencia total.</td>
+          </tr>
+          <tr>
+            <td>2. Vocabulario<br><small style="font-weight:400;color:var(--muted)">3 pts</small></td>
+            <td class="rubric-tl"><strong>3 pts</strong><br>≥6 palabras del vocabulario aprendido, usadas correctamente.</td>
+            <td class="rubric-l"><strong>2,4 pts</strong><br>≥5 palabras correctas.</td>
+            <td class="rubric-pl"><strong>1,8 pts</strong><br>≥4 palabras correctas.</td>
+            <td class="rubric-il"><strong>0,9 pts</strong><br>≥3 palabras correctas.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>≤2 palabras o uso incorrecto.</td>
+          </tr>
+          <tr>
+            <td>3. Gramática<br><small style="font-weight:400;color:var(--muted)">3 pts</small></td>
+            <td class="rubric-tl"><strong>3 pts</strong><br>Oraciones correctas. Máx. 1 error sin impacto.</td>
+            <td class="rubric-l"><strong>2,4 pts</strong><br>Mayoría correctas. 2–3 errores.</td>
+            <td class="rubric-pl"><strong>1,8 pts</strong><br>4–5 errores que dificultan parcialmente.</td>
+            <td class="rubric-il"><strong>0,9 pts</strong><br>6–7 errores significativos.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>≥8 errores que impiden comprensión.</td>
+          </tr>
+          <tr>
+            <td>4. Ortografía<br><small style="font-weight:400;color:var(--muted)">2 pts</small></td>
+            <td class="rubric-tl"><strong>2 pts</strong><br>Máx. 2 errores sin interferencia.</td>
+            <td class="rubric-l"><strong>1,6 pts</strong><br>3–4 errores, mensaje comprensible.</td>
+            <td class="rubric-pl"><strong>1,2 pts</strong><br>5–6 errores que afectan parcialmente.</td>
+            <td class="rubric-il"><strong>0,6 pts</strong><br>7–8 errores significativos.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>≥9 errores que impiden comprensión.</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="tip-box" style="margin-top:12px;">
+        <div class="tip-label">💡 Claves para el nivel "Totalmente Logrado"</div>
+        ✅ ≥60 palabras · ✅ Todas las ideas del estímulo · ✅ ≥6 palabras de vocabulario · ✅ Máx. 1 error gramatical · ✅ Máx. 2 errores ortográficos
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-writing">Errores</span>
+      Errores frecuentes en Writing
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <table class="grammar-table">
+        <thead><tr><th>Error</th><th>Incorrecto</th><th>Correcto</th></tr></thead>
+        <tbody>
+          <tr><td>Tercera persona -s</td><td class="eg" style="color:#b91c1c">The company sell apples.</td><td class="eg">The company <strong>sells</strong> apples.</td></tr>
+          <tr><td>Doble comparativo</td><td class="eg" style="color:#b91c1c">more higher / more bigger</td><td class="eg">higher / bigger (no "more" con adj. cortos)</td></tr>
+          <tr><td>"The" en superlativo</td><td class="eg" style="color:#b91c1c">This is most popular product.</td><td class="eg">This is <strong>the</strong> most popular product.</td></tr>
+          <tr><td>Be going to</td><td class="eg" style="color:#b91c1c">The company going to expand.</td><td class="eg">The company <strong>is going to</strong> expand.</td></tr>
+          <tr><td>Simple past regular</td><td class="eg" style="color:#b91c1c">The company launche a campaign.</td><td class="eg">The company <strong>launched</strong> a campaign.</td></tr>
+          <tr><td>Copiar el texto</td><td class="eg" style="color:#b91c1c">Copiar oraciones del estímulo.</td><td class="eg">Usar los datos para tus propias oraciones.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SPEAKING
+══════════════════════════════════════ -->
+<div id="tab-speaking" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-speaking">🎤</div>
+    <h2>Speaking</h2>
+    <span class="pts-badge">12 pts · 2 partes</span>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-speaking">Part 1</span>
+      Tarea Individual — postulación profesional
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <p class="acc-p">Recibirás una tarjeta con eventos fechados de una carrera profesional. Debes hablar sobre <strong>Academic Background</strong>, <strong>Professional Experience</strong> y <strong>Recognitions &amp; Additional Activities</strong>.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">🗣️ Estructura sugerida</div>
+        <ol class="steps-list">
+          <li>Presentación breve: "Hello, my name is... I am applying for the position of..."</li>
+          <li>Academic Background: "In [YEAR], I completed / earned / studied..."</li>
+          <li>Professional Experience: "In [YEAR], I successfully [achieved / reduced / designed / led]..."</li>
+          <li>Recognitions &amp; Activities: "In [YEAR], I was recognized with the [award] for..." / "I organized / led / published..."</li>
+          <li>Cierre: "I believe this experience makes me a strong candidate for this role."</li>
+        </ol>
+      </div>
+
+      <p style="font-weight:700; margin:14px 0 8px;">Verbos en simple past que necesitas:</p>
+      <div class="verb-grid">
+        <div class="verb-card"><div class="base">complete</div><div class="past">completed</div></div>
+        <div class="verb-card"><div class="base">earn</div><div class="past">earned</div></div>
+        <div class="verb-card"><div class="base">reduce</div><div class="past">reduced</div></div>
+        <div class="verb-card"><div class="base">design</div><div class="past">designed</div></div>
+        <div class="verb-card"><div class="base">organize</div><div class="past">organized</div></div>
+        <div class="verb-card"><div class="base">publish</div><div class="past">published</div></div>
+        <div class="verb-card"><div class="base">implement</div><div class="past">implemented</div></div>
+        <div class="verb-card"><div class="base">coordinate</div><div class="past">coordinated</div></div>
+        <div class="verb-card"><div class="base">lead</div><div class="past">led ⚠️</div></div>
+        <div class="verb-card"><div class="base">begin</div><div class="past">began ⚠️</div></div>
+        <div class="verb-card"><div class="base">award</div><div class="past">was awarded</div></div>
+        <div class="verb-card"><div class="base">negotiate</div><div class="past">negotiated</div></div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplo de respuesta (datos completamente inventados)</div>
+        "Hello. I am applying for the Logistics Analyst Supervisor position. In 2020, I began my studies in International Trade. In 2022, I designed a new documentation process that reduced errors by 20%. In 2023, I was recognized with the Best Analyst award for outstanding leadership. In 2024, I organized a regional logistics seminar with 150 participants. I believe my experience makes me a strong candidate."
+      </div>
+
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Puntos críticos</div>
+        Usa la información de tu tarjeta — no inventes datos que no aparecen en ella.<br>
+        Verifica que todos los verbos estén en <strong>simple past</strong> — es el tiempo central de Part 1.
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-speaking">Part 2</span>
+      Interacción en pareja
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="acc-p">Junto a tu compañero/a, elegirán un escenario. Ambos trabajan en la misma empresa y se conocen por primera vez. La conversación tiene <strong>3 sub-tareas con tiempos verbales distintos</strong>:</p>
+
+      <table class="grammar-table">
+        <thead><tr><th>Sub-tarea</th><th>Tiempo verbal</th><th>Preguntas que puedes hacer</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="form">1. Presentarse + rutina diaria</td>
+            <td class="eg">Simple present + adverbs of frequency</td>
+            <td>"What do you do? / What do you <em>usually</em> do in the morning?"</td>
+          </tr>
+          <tr>
+            <td class="form">2. Semana pasada</td>
+            <td class="eg">Simple past</td>
+            <td>"What did you do last week? / Did you go to...? / Where did you go on Monday?"</td>
+          </tr>
+          <tr>
+            <td class="form">3. Próxima semana</td>
+            <td class="eg">Be going to</td>
+            <td>"What are you going to do next week? / Are you going to...?"</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example-box">
+        <div class="ex-label">✅ Mini-diálogo de ejemplo (datos inventados)</div>
+        <strong>A:</strong> "Hi! I'm Ana. I'm a Foreign Trade Analyst. I usually prepare export documents in the morning. What about you?"<br>
+        <strong>B:</strong> "Nice to meet you. I'm Carlos, a Customs Broker. I usually advise clients on regulations every day."<br>
+        <strong>A:</strong> "What did you do last week?"<br>
+        <strong>B:</strong> "Last week I traveled to the port in the morning. What are you going to do next week?"<br>
+        <strong>A:</strong> "I'm going to attend a trade conference. Are you going to work in the office?"
+      </div>
+
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Errores frecuentes en la interacción</div>
+        <span class="ex-bad">✗</span> <span class="ex-good">"What you going to do last week?" → "What <strong>did</strong> you do last week?"</span><br>
+        <span class="ex-bad">✗</span> <span class="ex-good">"Where you went?" → "Where <strong>did you go</strong>?"</span><br>
+        <span class="ex-bad">✗</span> <span class="ex-good">"I will attend." → "I <strong>am going to</strong> attend." (en contexto de be going to)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-speaking">Rúbrica</span>
+      Rúbrica oficial de Speaking
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <div style="overflow-x:auto;">
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>Totalmente Logrado</th>
+            <th>Logrado</th>
+            <th>Parcialmente Logrado</th>
+            <th>Insuf. Logrado</th>
+            <th>No Logrado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Coherencia y Fluidez<br><small style="font-weight:400;color:var(--muted)">4 pts</small></td>
+            <td class="rubric-tl"><strong>4 pts</strong><br>Todas las tareas coherentes. Hasta 3 interrupciones sin afectar claridad.</td>
+            <td class="rubric-l"><strong>3,2 pts</strong><br>Todas coherentes. Hasta 4 interrupciones.</td>
+            <td class="rubric-pl"><strong>2,4 pts</strong><br>1 incoherencia. Hasta 5 interrupciones moderadas.</td>
+            <td class="rubric-il"><strong>1,2 pts</strong><br>Tareas incompletas. ≥2 incoherencias. 6–7 interrupciones.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>≥8 interrupciones o ideas incoherentes que impiden comprensión.</td>
+          </tr>
+          <tr>
+            <td>2. Vocabulario<br><small style="font-weight:400;color:var(--muted)">3 pts</small></td>
+            <td class="rubric-tl"><strong>3 pts</strong><br>≥6 palabras correctas del vocabulario aprendido.</td>
+            <td class="rubric-l"><strong>2,4 pts</strong><br>≥5 palabras correctas.</td>
+            <td class="rubric-pl"><strong>1,8 pts</strong><br>≥4 palabras correctas.</td>
+            <td class="rubric-il"><strong>0,9 pts</strong><br>≥3 palabras correctas.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>≤2 palabras correctas o uso incorrecto.</td>
+          </tr>
+          <tr>
+            <td>3. Gramática<br><small style="font-weight:400;color:var(--muted)">3 pts</small></td>
+            <td class="rubric-tl"><strong>3 pts</strong><br>Oraciones correctas. Máx. 1 error sin impacto.</td>
+            <td class="rubric-l"><strong>2,4 pts</strong><br>Mayoría correctas. 2–3 errores.</td>
+            <td class="rubric-pl"><strong>1,8 pts</strong><br>4–5 errores que dificultan parcialmente.</td>
+            <td class="rubric-il"><strong>0,9 pts</strong><br>6–7 errores significativos.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>≥8 errores que impiden comprensión.</td>
+          </tr>
+          <tr>
+            <td>4. Pronunciación<br><small style="font-weight:400;color:var(--muted)">2 pts</small></td>
+            <td class="rubric-tl"><strong>2 pts</strong><br>Máx. 2 errores sin interferencia.</td>
+            <td class="rubric-l"><strong>1,6 pts</strong><br>3–4 errores, mensaje comprensible.</td>
+            <td class="rubric-pl"><strong>1,2 pts</strong><br>5–6 errores que afectan parcialmente.</td>
+            <td class="rubric-il"><strong>0,6 pts</strong><br>7–8 errores significativos.</td>
+            <td class="rubric-nl"><strong>0 pts</strong><br>≥9 errores o articulación incomprensible.</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-speaking">Tips</span>
+      Pronunciación y fluidez — nivel A2
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <div class="tip-box">
+        <div class="tip-label">💡 5 tips para el día del oral</div>
+        <ol class="steps-list">
+          <li><strong>No apresures:</strong> hablar lentamente y con claridad es mejor que hablar rápido con errores.</li>
+          <li><strong>Las pausas son normales:</strong> hasta 3 pausas breves no afectan tu puntaje.</li>
+          <li><strong>Las autocorrecciones suman:</strong> corregirte muestra que reconoces el error.</li>
+          <li><strong>Articula las consonantes finales:</strong> la -s de tercera persona (he works) y el -ed del pasado (completed) deben escucharse.</li>
+          <li><strong>Nombres propios:</strong> pronúncialos con confianza — no hay una forma perfecta única.</li>
+        </ol>
+      </div>
+      <table class="grammar-table">
+        <thead><tr><th>Sonido</th><th>Error frecuente (español-hablante)</th><th>Cómo corregirlo</th></tr></thead>
+        <tbody>
+          <tr><td class="form">-ed final</td><td>"completed" como 3 sílabas en todos los casos</td><td>Solo es sílaba /id/ si el verbo termina en -t o -d: wan<em>ted</em>, nee<em>ded</em>. Reduced = /st/, launched = /t/</td></tr>
+          <tr><td class="form">th</td><td>"the" pronunciado como "de"</td><td>Lengua entre los dientes — fricativo, no /d/ ni /t/</td></tr>
+          <tr><td class="form">-s final</td><td>Omitir la -s de tercera persona: "he work"</td><td>Siempre añadir -s/es: "he <strong>works</strong>", "she <strong>manages</strong>"</td></tr>
+          <tr><td class="form">know / k silenciosa</td><td>Pronunciar "know" como "k-now"</td><td>La k es silenciosa: /noʊ/</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     GRAMÁTICA
+══════════════════════════════════════ -->
+<div id="tab-grammar" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-grammar">⚙️</div>
+    <h2>Gramática — Constructs del EFT</h2>
+  </div>
+
+  <div class="intro-box">
+    Los 5 constructs gramaticales evaluados en el examen. Cada sección incluye estructura, uso y ejemplos originales en contexto COMEX.
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-grammar">1</span>
+      Simple Present + Adverbs of Frequency
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <div class="structure-box">
+        [Subject] + [Verb (+ <strong>-s/-es</strong> en 3ª persona)] + [Complement]<br>
+        Negativa: [Subject] + do / does + not + [base verb]<br>
+        Pregunta: Do / Does + [Subject] + [base verb]?
+      </div>
+      <div class="warning-box">
+        <div class="tip-label">⚠️ Regla de tercera persona</div>
+        he / she / it → siempre añade <strong>-s</strong> o <strong>-es</strong> al verbo.<br>
+        work → work<strong>s</strong> · manage → manage<strong>s</strong> · go → go<strong>es</strong> · have → ha<strong>s</strong>
+      </div>
+      <table class="grammar-table">
+        <thead><tr><th>Adverbio</th><th>Frecuencia</th><th>Posición</th></tr></thead>
+        <tbody>
+          <tr><td class="form">always</td><td>100%</td><td>Antes del verbo principal / después de "be"</td></tr>
+          <tr><td class="form">usually</td><td>~80%</td><td>Antes del verbo principal</td></tr>
+          <tr><td class="form">often</td><td>~60%</td><td>Antes del verbo principal</td></tr>
+          <tr><td class="form">sometimes</td><td>~40%</td><td>Antes del verbo o al inicio de oración</td></tr>
+          <tr><td class="form">never</td><td>0%</td><td>Antes del verbo principal</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplos en contexto COMEX</div>
+        A Customs Broker <strong>usually checks</strong> import documents every morning.<br>
+        She <strong>always verifies</strong> the cargo weight before shipment.<br>
+        The logistics team <strong>sometimes works</strong> on weekends during peak season.
+      </div>
+      <div class="warning-box">
+        <span class="ex-bad">✗ She always work early.</span> → <span class="ex-good">✓ She always work<strong>s</strong> early.</span><br>
+        <span class="ex-bad">✗ She works always early.</span> → <span class="ex-good">✓ She <strong>always</strong> works early. (adverbio antes del verbo)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-grammar">2</span>
+      Simple Past
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <div class="structure-box">
+        Afirmativa: [Subject] + [Verb-ed / forma irregular]<br>
+        Negativa: [Subject] + did not (didn't) + [base verb]<br>
+        Pregunta: Did + [Subject] + [base verb]?
+      </div>
+      <p style="font-weight:700; margin:12px 0 8px;">Verbos clave para este examen:</p>
+      <div class="verb-grid">
+        <div class="verb-card"><div class="base">complete</div><div class="past">completed</div></div>
+        <div class="verb-card"><div class="base">launch</div><div class="past">launched</div></div>
+        <div class="verb-card"><div class="base">increase</div><div class="past">increased</div></div>
+        <div class="verb-card"><div class="base">decrease</div><div class="past">decreased</div></div>
+        <div class="verb-card"><div class="base">organize</div><div class="past">organized</div></div>
+        <div class="verb-card"><div class="base">reduce</div><div class="past">reduced</div></div>
+        <div class="verb-card"><div class="base">design</div><div class="past">designed</div></div>
+        <div class="verb-card"><div class="base">implement</div><div class="past">implemented</div></div>
+        <div class="verb-card"><div class="base">reach</div><div class="past">reached</div></div>
+        <div class="verb-card"><div class="base">improve</div><div class="past">improved</div></div>
+        <div class="verb-card"><div class="base">go</div><div class="past">went ⚠️</div></div>
+        <div class="verb-card"><div class="base">meet</div><div class="past">met ⚠️</div></div>
+        <div class="verb-card"><div class="base">lead</div><div class="past">led ⚠️</div></div>
+        <div class="verb-card"><div class="base">buy</div><div class="past">bought ⚠️</div></div>
+        <div class="verb-card"><div class="base">make</div><div class="past">made ⚠️</div></div>
+        <div class="verb-card"><div class="base">begin</div><div class="past">began ⚠️</div></div>
+      </div>
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplos en contexto COMEX</div>
+        In 2023, the analyst <strong>completed</strong> a certification in international logistics.<br>
+        Last year, the company <strong>launched</strong> a new product for the Asian market.<br>
+        The manager <strong>led</strong> a cross-border project with five partner companies.
+      </div>
+      <div class="warning-box">
+        <span class="ex-bad">✗ She leaded the project.</span> → <span class="ex-good">✓ She <strong>led</strong> the project. (irregular)</span><br>
+        <span class="ex-bad">✗ Did she completed the form?</span> → <span class="ex-good">✓ Did she <strong>complete</strong> the form? (did + base verb)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-grammar">3</span>
+      Be Going To — Planes Futuros
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <div class="structure-box">
+        Afirmativa: [Subject] + am / is / are + going to + [base verb]<br>
+        Negativa: [Subject] + am / is / are + not + going to + [base verb]<br>
+        Pregunta: Am / Is / Are + [Subject] + going to + [base verb]?
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 ¿Cuándo usar be going to?</div>
+        Para hablar de <strong>planes e intenciones futuras</strong> — algo que ya decidiste hacer. Lo usas en la Part 2 del oral al hablar de la próxima semana, y en el Writing al proponer planes para la empresa.
+      </div>
+      <div class="example-box">
+        <div class="ex-label">✅ Ejemplos en contexto COMEX</div>
+        The company <strong>is going to</strong> launch a new product line next quarter.<br>
+        We <strong>are going to</strong> review our progress in July.<br>
+        She <strong>is going to</strong> attend an international trade seminar next week.
+      </div>
+      <div class="warning-box">
+        <span class="ex-bad">✗ The company going to expand.</span> → <span class="ex-good">✓ The company <strong>is going to</strong> expand. (falta verbo "to be")</span><br>
+        <span class="ex-bad">✗ We are going expand.</span> → <span class="ex-good">✓ We are going <strong>to</strong> expand. (falta "to")</span><br>
+        <span class="ex-bad">✗ They is going to travel.</span> → <span class="ex-good">✓ They <strong>are</strong> going to travel. (they → are)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-grammar">4</span>
+      Comparativos
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <div class="structure-box">
+        Adjetivo corto (1 sílaba): [adj]-<strong>er</strong> + than → faster, higher, cheaper<br>
+        Adjetivo largo (2+ sílabas): <strong>more</strong> + [adj] + than → more popular, more efficient<br>
+        Irregulares: good → <strong>better</strong> | bad → <strong>worse</strong>
+      </div>
+      <table class="grammar-table">
+        <thead><tr><th>Tipo</th><th>Adjetivo</th><th>Comparativo</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td>Corto</td><td class="form">high</td><td class="form">higher than</td><td class="eg">Sales are higher than last year.</td></tr>
+          <tr><td>Corto</td><td class="form">cheap</td><td class="form">cheaper than</td><td class="eg">Our product is cheaper than the competitor's.</td></tr>
+          <tr><td>Largo</td><td class="form">popular</td><td class="form">more popular than</td><td class="eg">Apples are more popular than oranges.</td></tr>
+          <tr><td>Largo</td><td class="form">durable</td><td class="form">more durable than</td><td class="eg">This product is more durable than before.</td></tr>
+          <tr><td>Irregular</td><td class="form">good</td><td class="form">better than</td><td class="eg">Our results are better than last year.</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <span class="ex-bad">✗ Sales are more higher.</span> → <span class="ex-good">✓ Sales are <strong>higher</strong>. (doble comparativo ❌)</span><br>
+        <span class="ex-bad">✗ This is more good.</span> → <span class="ex-good">✓ This is <strong>better</strong>. (good es irregular)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-grammar">5</span>
+      Superlativos
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body">
+      <div class="structure-box">
+        Adjetivo corto (1 sílaba): <strong>the</strong> + [adj]-<strong>est</strong> → the fastest, the highest<br>
+        Adjetivo largo (2+ sílabas): <strong>the most</strong> + [adj] → the most popular, the most efficient<br>
+        Irregulares: good → <strong>the best</strong> | bad → <strong>the worst</strong>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">💡 Regla de oro</div>
+        Siempre usa <strong>"the"</strong> antes del superlativo. Omitirlo es uno de los errores más frecuentes.
+      </div>
+      <table class="grammar-table">
+        <thead><tr><th>Tipo</th><th>Adjetivo</th><th>Superlativo</th><th>Ejemplo</th></tr></thead>
+        <tbody>
+          <tr><td>Corto</td><td class="form">high</td><td class="form">the highest</td><td class="eg">January had the highest sales of the year.</td></tr>
+          <tr><td>Corto</td><td class="form">strong</td><td class="form">the strongest</td><td class="eg">Q1 was the strongest quarter.</td></tr>
+          <tr><td>Largo</td><td class="form">popular</td><td class="form">the most popular</td><td class="eg">Grapes were the most popular product.</td></tr>
+          <tr><td>Irregular</td><td class="form">good</td><td class="form">the best</td><td class="eg">This is the best-selling product in Q1.</td></tr>
+        </tbody>
+      </table>
+      <div class="warning-box">
+        <span class="ex-bad">✗ This is most popular product.</span> → <span class="ex-good">✓ This is <strong>the</strong> most popular product.</span><br>
+        <span class="ex-bad">✗ Sales were most highest in January.</span> → <span class="ex-good">✓ Sales were <strong>the highest</strong> in January.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     CHECKLIST
+══════════════════════════════════════ -->
+<div id="tab-checklist" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-checklist">☑️</div>
+    <h2>Checklist de preparación</h2>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <span class="progress-label" id="progressLabel">0 / 20 completado</span>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <div class="checklist-section">
+    <h3>📚 Antes del examen — Estudio</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Repasar los 5 constructs de la guía: Simple Present, Simple Past, Be Going To, Comparativos, Superlativos.</span><span class="ci-badge badge-g">Gramática</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Practicar verbos irregulares: go → went · lead → led · meet → met · begin → began · make → made.</span><span class="ci-badge badge-g">Gramática</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Repasar vocabulario de roles laborales: Customs Officer, Forklift Operator, Warehouse Worker, Harbor Supervisor, etc.</span><span class="ci-badge badge-r">Reading</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Leer la rúbrica de Writing completa y entender qué evalúa cada uno de los 4 criterios.</span><span class="ci-badge badge-w">Writing</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Leer la rúbrica de Speaking completa (Coherencia/Fluidez · Vocabulario · Gramática · Pronunciación).</span><span class="ci-badge badge-s">Speaking</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Practicar escribir un reporte de negocio usando SP + Past + Going To + comparativos + superlativos (≥60 palabras).</span><span class="ci-badge badge-w">Writing</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Practicar la tarea individual del oral: describir logros profesionales con fechas y verbos en simple past.</span><span class="ci-badge badge-s">Speaking</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Practicar la interacción del oral con un compañero/a: rutina (SP) + semana pasada (Past) + próxima semana (Going To).</span><span class="ci-badge badge-s">Speaking</span></label>
+  </div>
+
+  <div class="checklist-section">
+    <h3>📝 El día del examen escrito</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Llevar lápiz de pasta (lapicera) para las respuestas escritas.</span><span class="ci-badge badge-g">Material</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Llevar lápiz grafito y corrector líquido.</span><span class="ci-badge badge-g">Material</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Listening: leer el texto guía y las opciones antes de que empiece el audio.</span><span class="ci-badge badge-l">Listening</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En selección múltiple: marcar solo UNA alternativa — si marcas dos, la respuesta queda anulada aunque una sea correcta.</span><span class="ci-badge badge-l">Regla</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Reading Part A: leer cada descripción completa antes de asignar el cargo — no elegir por una sola palabra.</span><span class="ci-badge badge-r">Reading</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Reading Part B: responder en inglés con frases completas (sujeto + verbo) — incluir justificación en preguntas de opinión.</span><span class="ci-badge badge-r">Reading</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Writing: contar las palabras antes de entregar — mínimo 60 palabras.</span><span class="ci-badge badge-w">Writing</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">En Writing: verificar que usé Simple Present, Simple Past y Be Going To — más comparativos y superlativos.</span><span class="ci-badge badge-w">Writing</span></label>
+  </div>
+
+  <div class="checklist-section">
+    <h3>🎤 El día del examen oral</h3>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Hablar con volumen y claridad — no susurrar ni acelerar el ritmo.</span><span class="ci-badge badge-s">Fluidez</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Usar el tiempo verbal correcto: simple present (rutina) · simple past (semana pasada) · be going to (próxima semana).</span><span class="ci-badge badge-s">Gramática</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Hacer preguntas genuinas al compañero/a en la interacción — no solo responder.</span><span class="ci-badge badge-s">Interacción</span></label>
+    <label class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="ci-text">Si cometo un error, corregirme naturalmente y continuar — las autocorrecciones son valoradas positivamente.</span><span class="ci-badge badge-s">Fluidez</span></label>
+  </div>
+</div>
+
+</div><!-- /content -->
+</div><!-- /container -->
+
+<script>
+// ── TABS ──
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  const navTabs = document.getElementById('navTabs');
+  navTabs.classList.remove('written-active', 'oral-active');
+  if (btn && btn.classList.contains('group-written')) navTabs.classList.add('written-active');
+  if (btn && btn.classList.contains('group-oral'))    navTabs.classList.add('oral-active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── ACCORDION ──
+function toggleAcc(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.closest('.tab-panel').querySelectorAll('.accordion-header').forEach(h => {
+    h.classList.remove('open');
+    h.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    header.classList.add('open');
+    body.classList.add('open');
+  }
+}
+
+// ── CALCULADORA ──
+function clamp(v, mn, mx) { return Math.min(mx, Math.max(mn, parseFloat(v) || mn)); }
+function calcNota() {
+  const p = clamp(document.getElementById('calcPromedio').value, 1, 7);
+  const e = clamp(document.getElementById('calcEscrito').value,  1, 7);
+  const o = clamp(document.getElementById('calcOral').value,     1, 7);
+  const cp = p * 0.6, ce = e * 0.3, co = o * 0.1;
+  const nota = Math.min(7, Math.max(1, Math.round((cp + ce + co) * 10) / 10));
+  const fmt = n => n.toFixed(1).replace('.', ',');
+  document.getElementById('calcResultNum').textContent = fmt(nota);
+  document.getElementById('bdProm').textContent  = fmt(p);
+  document.getElementById('bdEsc').textContent   = fmt(e);
+  document.getElementById('bdOral').textContent  = fmt(o);
+  document.getElementById('bdPromC').textContent = '× 0,6 = ' + fmt(cp);
+  document.getElementById('bdEscC').textContent  = '× 0,3 = ' + fmt(ce);
+  document.getElementById('bdOralC').textContent = '× 0,1 = ' + fmt(co);
+  const num = document.getElementById('calcResultNum');
+  let msg = '', color = '';
+  if      (nota >= 6.5) { msg = '🌟 ¡Excelente resultado!';          color = '#059669'; }
+  else if (nota >= 5.5) { msg = '✅ ¡Muy buen desempeño!';           color = '#10b981'; }
+  else if (nota >= 4.0) { msg = '👍 Aprobado — ¡bien hecho!';        color = '#f59e0b'; }
+  else if (nota >= 3.5) { msg = '⚠️ Cerca de aprobar — ¡sigue!';     color = '#f97316'; }
+  else                  { msg = '🔴 Por debajo del mínimo — ánimo.'; color = '#ef4444'; }
+  num.style.color = color;
+  document.getElementById('calcResultMsg').textContent = msg;
+}
+
+// ── CHECKLIST ──
+function toggleCheck(label) {
+  const cb = label.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  label.classList.toggle('checked', cb.checked);
+  updateProgress();
+  saveChecklist();
+}
+function updateProgress() {
+  const total = document.querySelectorAll('.check-item').length;
+  const done  = document.querySelectorAll('.check-item.checked').length;
+  const pct   = Math.round((done / total) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = done + ' / ' + total + ' completado';
+}
+function saveChecklist() {
+  const states = [];
+  document.querySelectorAll('.check-item input').forEach(cb => states.push(cb.checked));
+  try { localStorage.setItem('ini3131_checklist_v1', JSON.stringify(states)); } catch(e) {}
+}
+function loadChecklist() {
+  try {
+    const raw = localStorage.getItem('ini3131_checklist_v1');
+    if (!raw) return;
+    JSON.parse(raw).forEach((checked, i) => {
+      const items = document.querySelectorAll('.check-item');
+      if (checked && items[i]) {
+        items[i].querySelector('input').checked = true;
+        items[i].classList.add('checked');
+      }
+    });
+    updateProgress();
+  } catch(e) {}
+}
+
+// ── INIT ──
+calcNota();
+loadChecklist();
+</script>
+</body>
+</html>
