@@ -395,6 +395,83 @@ body {
   .weight-banner { max-width: 100%; }
   .rubric-table { font-size: 0.72em; }
 }
+
+/* ── PRÁCTICA TAB ── */
+.key-data-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:10px; margin:6px 0 14px; }
+.key-data-item { display:flex; align-items:flex-start; gap:10px; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:11px 14px; }
+.kd-icon { font-size:1.25em; flex-shrink:0; margin-top:1px; }
+.kd-text { font-size:0.82em; line-height:1.5; }
+.kd-text strong { color:var(--secondary); display:block; margin-bottom:2px; }
+.kd-num { font-weight:700; color:var(--primary); }
+
+.step-card { border-radius:14px; overflow:hidden; margin-bottom:20px; border:1px solid var(--border); }
+.step-hd { padding:14px 20px; display:flex; align-items:center; gap:14px; }
+.step-hd.s1 { background:linear-gradient(135deg,#e0f2fe,#bae6fd); }
+.step-hd.s2 { background:linear-gradient(135deg,#ede9fe,#ddd6fe); }
+.step-hd.s3 { background:linear-gradient(135deg,#f0fdf4,#dcfce7); }
+.step-hd.s4 { background:linear-gradient(135deg,#fef9c3,#fef3c7); }
+.step-num { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'DM Serif Display',serif; font-size:1.05em; color:white; flex-shrink:0; }
+.s1 .step-num { background:#0891b2; } .s2 .step-num { background:var(--secondary); }
+.s3 .step-num { background:var(--success); } .s4 .step-num { background:var(--warning); }
+.step-title { font-family:'DM Serif Display',serif; font-size:1.05em; color:var(--text); }
+.step-sub { font-size:0.76em; color:var(--muted); margin-top:2px; }
+.step-body { padding:20px 22px; background:white; }
+
+.plan-table { width:100%; border-collapse:collapse; font-size:0.87em; margin:6px 0 0; }
+.plan-table th { background:#f1f5f9; padding:9px 12px; text-align:left; font-weight:700; font-size:0.78em; letter-spacing:0.5px; text-transform:uppercase; border-bottom:2px solid var(--border); }
+.plan-table td { padding:11px 12px; border-top:1px solid var(--border); vertical-align:top; line-height:1.5; font-size:0.87em; }
+.blk-label { font-family:'DM Serif Display',serif; font-size:0.95em; font-weight:700; }
+.pres-row { background:#eff6ff; } .pres-row .blk-label { color:#1d4ed8; }
+.past-row { background:#f0fdf4; } .past-row .blk-label { color:#065f46; }
+.fut-row  { background:#f5f3ff; } .fut-row  .blk-label { color:#7c3aed; }
+.tense-pill { display:inline-block; padding:3px 10px; border-radius:20px; font-size:0.72em; font-weight:700; }
+.pres-pill { background:#bfdbfe; color:#1d4ed8; } .past-pill { background:#86efac; color:#065f46; } .fut-pill { background:#c4b5fd; color:#7c3aed; }
+
+.starters-group { margin-bottom:16px; }
+.starters-group:last-child { margin-bottom:0; }
+.starters-lbl { font-size:0.72em; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:5px 12px; border-radius:6px 6px 0 0; display:inline-block; }
+.starters-lbl.pres { background:#eff6ff; color:#1d4ed8; border:1px solid #93c5fd; border-bottom:none; }
+.starters-lbl.past { background:#f0fdf4; color:#065f46; border:1px solid #86efac; border-bottom:none; }
+.starters-lbl.fut  { background:#f5f3ff; color:#7c3aed; border:1px solid #c4b5fd; border-bottom:none; }
+.starters-box { border-radius:0 10px 10px 10px; padding:14px 16px; }
+.starters-box.pres { background:#eff6ff; border:1px solid #93c5fd; }
+.starters-box.past { background:#f0fdf4; border:1px solid #86efac; }
+.starters-box.fut  { background:#f5f3ff; border:1px solid #c4b5fd; }
+.starter-item { font-size:0.87em; line-height:1.65; margin-bottom:6px; padding-left:14px; position:relative; }
+.starter-item:last-child { margin-bottom:0; }
+.starter-item::before { content:'→'; position:absolute; left:0; font-weight:700; }
+.pres .starter-item::before { color:#1d4ed8; } .past .starter-item::before { color:#065f46; } .fut .starter-item::before { color:#7c3aed; }
+
+.wcount-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:0.8em; color:var(--muted); }
+#wCount { font-weight:700; color:var(--primary); transition:color 0.3s; }
+#wCount.wok { color:var(--success); } #wCount.wwarn { color:var(--warning); }
+#practiceArea { width:100%; min-height:200px; border:2px solid var(--border); border-radius:12px; padding:14px; font-family:'DM Sans',sans-serif; font-size:0.93em; line-height:1.75; color:var(--text); resize:vertical; transition:border-color 0.2s; }
+#practiceArea:focus { outline:none; border-color:var(--primary); }
+#practiceArea.wok { border-color:var(--success); } #practiceArea.wwarn { border-color:var(--warning); }
+
+.eval-btn { width:100%; margin-top:14px; padding:13px; background:linear-gradient(135deg,var(--primary),var(--secondary)); color:white; border:none; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.95em; font-weight:700; cursor:pointer; letter-spacing:0.5px; transition:all 0.2s; }
+.eval-btn:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(79,70,229,0.3); }
+
+.pcheck-item { display:flex; align-items:flex-start; gap:10px; padding:10px 12px; border-radius:9px; background:#fafafa; border:1px solid var(--border); cursor:pointer; transition:all 0.18s; user-select:none; font-size:0.85em; line-height:1.5; margin-bottom:8px; }
+.pcheck-item:hover { background:#f1f5f9; }
+.pcheck-item.pchecked { background:#f0fdf4; border-color:#6ee7b7; }
+.pcheck-item input[type="checkbox"] { width:16px; height:16px; accent-color:var(--success); flex-shrink:0; margin-top:2px; }
+.pcheck-item .pci-text { color:var(--text); }
+.pcheck-item.pchecked .pci-text { color:var(--muted); text-decoration:line-through; }
+.pcheck-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+
+.data-table { width:100%; border-collapse:collapse; font-size:0.82em; margin:10px 0; }
+.data-table th { background:linear-gradient(135deg,#4f46e5,#7c3aed); color:white; padding:8px 10px; text-align:center; border:1px solid #c7d2fe; font-size:0.8em; }
+.data-table th:first-child { text-align:left; }
+.data-table td { padding:7px 10px; border:1px solid var(--border); text-align:center; vertical-align:middle; }
+.data-table td:first-child { text-align:left; font-weight:700; color:var(--secondary); }
+.data-table tr:nth-child(even) td { background:#fafbfc; }
+.data-table tr:last-child td { background:#fef9c3; font-weight:700; }
+.td-up { color:#059669; font-weight:700; } .td-dn { color:#dc2626; font-weight:700; } .td-st { color:#d97706; font-weight:700; }
+
+.task-context-box { background:#fafafa; border:1px solid var(--border); border-radius:8px; padding:14px 18px; font-style:italic; font-size:0.88em; line-height:1.7; color:#374151; margin-bottom:14px; }
+.vocab-warn { background:#fef9c3; border:1px solid #fde68a; border-left:4px solid var(--warning); border-radius:8px; padding:11px 14px; margin-top:12px; font-size:0.83em; line-height:1.65; color:#78350f; }
+
 </style>
 </head>
 <body>
@@ -435,6 +512,7 @@ body {
     <button class="nav-btn group-written" onclick="showTab('listening',  this)">🎧 Listening</button>
     <button class="nav-btn group-written" onclick="showTab('reading',    this)">📖 Reading</button>
     <button class="nav-btn group-written" onclick="showTab('writing',    this)">✍️ Writing</button>
+    <button class="nav-btn group-written" onclick="showTab('practica',  this)">🖊️ Práctica</button>
     <div class="nav-sep"></div>
     <button class="nav-btn group-oral"   onclick="showTab('speaking',    this)">🎤 Speaking</button>
     <div class="nav-sep"></div>
@@ -1448,6 +1526,205 @@ body {
   </div>
 </div>
 
+
+<!-- ══════════════════════════════════════
+     PRÁCTICA DE WRITING
+══════════════════════════════════════ -->
+<div id="tab-practica" class="tab-panel">
+  <div class="section-title">
+    <div class="section-icon icon-writing">🖊️</div>
+    <h2>Práctica de Writing</h2>
+    <span class="pts-badge">Corrección automática con IA</span>
+  </div>
+
+  <div class="intro-box">
+    Practica la tarea de writing con un estímulo diferente al del examen real. Cuando termines, usa el botón <strong>"Evaluar con IA"</strong> para recibir feedback inmediato basado en la rúbrica oficial del curso.
+  </div>
+
+  <!-- TAREA -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggleAcc(this)">
+      <span class="accordion-tag tag-writing">Tarea</span>
+      Lee la instrucción y el estímulo
+      <span class="accordion-chevron">▼</span>
+    </button>
+    <div class="accordion-body open">
+      <p class="acc-p"><strong>A.</strong> Use the information below to write a report about ChileDelMar S.A.'s 2024 and 2025 first quarter's sales and propose ideas for growing in the future.</p>
+      <p class="acc-p"><strong>Include:</strong></p>
+      <ul class="bullet-list">
+        <li>Products, popularity, sales and market plans for the next year.</li>
+        <li>Simple present, simple past, be going to, comparatives, superlatives, and at least 8 words from the vocabulary studied in class.</li>
+        <li>Write at least 60 words. Use original ideas ONLY. Do not copy ideas from this activity.</li>
+      </ul>
+      <div class="task-context-box">
+        <em>ChileDelMar S.A. is a Chilean company that exports fresh and frozen seafood products to Asian markets. The company has exported to Japan for 15 years. Last year, ChileDelMar launched a new branding campaign to promote the quality of Chilean seafood in Asia. The company now plans to increase its presence in the South Korean and Chinese markets in the future.</em>
+      </div>
+      <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th></th><th colspan="2">2024</th><th colspan="2">2025</th><th>Change (%)</th><th>Trend</th>
+          </tr>
+          <tr>
+            <th>Category</th><th>1st Quarter (USD)</th><th>% of Total</th><th>1st Quarter (USD)</th><th>% of Total</th><th></th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Salmon</td><td>95,000</td><td>36%</td><td>112,000</td><td>38.4%</td><td class="td-up">+18%</td><td class="td-up">↑ Growth</td></tr>
+          <tr><td>Seabass</td><td>48,000</td><td>18.2%</td><td>44,000</td><td>15%</td><td class="td-dn">−8%</td><td class="td-dn">↓ Decrease</td></tr>
+          <tr><td>Shrimp</td><td>72,000</td><td>27.3%</td><td>80,000</td><td>27.4%</td><td class="td-up">+11%</td><td class="td-up">↑ Growth</td></tr>
+          <tr><td>Squid</td><td>31,000</td><td>11.7%</td><td>29,000</td><td>9.9%</td><td class="td-dn">−6%</td><td class="td-dn">↓ Decrease</td></tr>
+          <tr><td>Scallops</td><td>18,000</td><td>6.8%</td><td>27,000</td><td>9.2%</td><td class="td-st">+50%</td><td class="td-st">🚀 Strong Growth</td></tr>
+          <tr><td>TOTAL</td><td>264,000</td><td>100%</td><td>292,000</td><td>100%</td><td class="td-up">+10.6%</td><td class="td-up">✅ Overall Growth</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 1 -->
+  <div class="step-card">
+    <div class="step-hd s1">
+      <div class="step-num">1</div>
+      <div><div class="step-title">Lee los datos clave</div><div class="step-sub">Los números más importantes — no necesitas usarlos todos</div></div>
+    </div>
+    <div class="step-body">
+      <div class="key-data-grid">
+        <div class="key-data-item"><span class="kd-icon">🥇</span><div class="kd-text"><strong>Salmon — más vendido</strong>USD 95K → USD 112K · <span class="kd-num">+18% · 38.4% del total</span></div></div>
+        <div class="key-data-item"><span class="kd-icon">🚀</span><div class="kd-text"><strong>Scallops — mayor crecimiento</strong>USD 18K → USD 27K · <span class="kd-num">+50% — crecimiento fuerte</span></div></div>
+        <div class="key-data-item"><span class="kd-icon">📈</span><div class="kd-text"><strong>Shrimp — crecimiento estable</strong>USD 72K → USD 80K · <span class="kd-num">+11% · 2° más vendido</span></div></div>
+        <div class="key-data-item"><span class="kd-icon">📉</span><div class="kd-text"><strong>Seabass y Squid — bajaron</strong>Seabass: −8% · Squid: −6% · <span class="kd-num">ambos disminuyeron</span></div></div>
+        <div class="key-data-item"><span class="kd-icon">💰</span><div class="kd-text"><strong>Total — subió</strong>USD 264,000 → USD 292,000 · <span class="kd-num">+10.6% en total</span></div></div>
+        <div class="key-data-item"><span class="kd-icon">🌏</span><div class="kd-text"><strong>Contexto de la empresa</strong>Exporta a Japón hace 15 años · <span class="kd-num">Planes: Corea del Sur y China</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 2 -->
+  <div class="step-card">
+    <div class="step-hd s2">
+      <div class="step-num">2</div>
+      <div><div class="step-title">Planifica en 3 bloques</div><div class="step-sub">Cada bloque usa un tiempo verbal diferente — escribe al menos 2 oraciones por bloque</div></div>
+    </div>
+    <div class="step-body">
+      <table class="plan-table">
+        <thead><tr><th style="width:18%">Bloque</th><th style="width:52%">¿Qué escribo?</th><th style="width:30%">Tiempo verbal</th></tr></thead>
+        <tbody>
+          <tr class="pres-row">
+            <td><span class="blk-label">1 — Hoy</span></td>
+            <td>¿Qué exporta la empresa? ¿Cuál es el producto más popular? ¿Cuál vende más que otro? ¿Cuál es el que más creció porcentualmente?</td>
+            <td><span class="tense-pill pres-pill">Simple present</span><br><br><span class="tense-pill pres-pill">Comparativos · Superlativos</span></td>
+          </tr>
+          <tr class="past-row">
+            <td><span class="blk-label">2 — Pasado</span></td>
+            <td>¿Qué hizo la empresa el año pasado? ¿Qué campaña lanzó? ¿Qué productos subieron? ¿Cuáles bajaron? ¿Cuánto creció el total?</td>
+            <td><span class="tense-pill past-pill">Simple past</span></td>
+          </tr>
+          <tr class="fut-row">
+            <td><span class="blk-label">3 — Futuro</span></td>
+            <td>¿Qué va a hacer la empresa para crecer? ¿Qué productos va a promover? ¿A qué mercados va a expandirse?</td>
+            <td><span class="tense-pill fut-pill">Be going to</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PASO 3 -->
+  <div class="step-card">
+    <div class="step-hd s3">
+      <div class="step-num">3</div>
+      <div><div class="step-title">Usa estos inicios de oración</div><div class="step-sub">Adáptalos o combínalos — no los copies tal cual</div></div>
+    </div>
+    <div class="step-body">
+      <div class="starters-group">
+        <div class="starters-lbl pres">🔵 Bloque 1 — Simple Present + Comparativos / Superlativos</div>
+        <div class="starters-box pres">
+          <div class="starter-item">ChileDelMar S.A. is a Chilean company that exports seafood products to <em>___</em>.</div>
+          <div class="starter-item">Their best-selling product is salmon, which represents <em>___</em>% of total sales.</div>
+          <div class="starter-item">Salmon is <strong>more popular than</strong> seabass because <em>___</em>.</div>
+          <div class="starter-item">Scallops are <strong>the fastest-growing</strong> product this year, with a 50% increase.</div>
+          <div class="starter-item">Currently, total sales are <strong>higher than</strong> last year.</div>
+        </div>
+      </div>
+      <div class="starters-group">
+        <div class="starters-lbl past">🟢 Bloque 2 — Simple Past</div>
+        <div class="starters-box past">
+          <div class="starter-item">Last year, ChileDelMar <strong>launched</strong> a branding campaign to promote <em>___</em>.</div>
+          <div class="starter-item">In 2024, the company <strong>exported</strong> USD 264,000 in total.</div>
+          <div class="starter-item">Salmon <strong>increased</strong> by 18%, which <strong>was</strong> the strongest growth in dollars.</div>
+          <div class="starter-item">Unfortunately, seabass <strong>decreased</strong> by 8%, and squid <strong>went down</strong> by 6%.</div>
+          <div class="starter-item">Total sales <strong>grew</strong> from USD 264,000 to USD 292,000.</div>
+        </div>
+      </div>
+      <div class="starters-group">
+        <div class="starters-lbl fut">🟣 Bloque 3 — Be Going To</div>
+        <div class="starters-box fut">
+          <div class="starter-item">The company <strong>is going to</strong> expand to South Korea and China.</div>
+          <div class="starter-item">ChileDelMar <strong>is going to</strong> focus on <em>___</em> because <em>___</em>.</div>
+          <div class="starter-item">They <strong>are going to</strong> promote scallops, as it was the fastest-growing product.</div>
+          <div class="starter-item">In the future, the company <strong>is going to</strong> increase its presence in <em>___</em>.</div>
+        </div>
+      </div>
+      <div class="vocab-warn">
+        <strong>⚠️ Vocabulario:</strong> el examen pide al menos 8 palabras del vocabulario estudiado en clases. Antes de escribir, piensa qué palabras del curso puedes incluir de forma natural.
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING AREA -->
+  <div class="part-divider"></div>
+  <div class="wcount-bar">
+    <span>Contador de palabras: <strong id="wCount">0 palabras</strong></span>
+    <span style="color:var(--muted)">Mínimo: <strong>60 palabras</strong></span>
+  </div>
+  <textarea id="practiceArea" placeholder="Start writing your report here. Remember: present situation → past changes → future plans..." oninput="practiceWordCount()"></textarea>
+
+  <button class="eval-btn" id="evalBtn" onclick="copiarParaGemini()" disabled style="opacity:0.45;cursor:not-allowed;">&#128203; Copiar prompt para Gemini</button>
+
+  <!-- GEMINI MODAL -->
+  <div id="geminiModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+    <div style="background:white;border-radius:18px;padding:32px;max-width:440px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,0.25);text-align:center;">
+      <div style="font-size:2.5em;margin-bottom:12px;">&#9989;</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1.35em;color:#1e293b;margin-bottom:10px;">¡Tu texto fue copiado!</div>
+      <p style="font-size:0.88em;color:#64748b;line-height:1.65;margin-bottom:18px;">
+        Abre Gemini y pega el prompt completo. Gemini evaluará tu Writing según la rúbrica oficial del curso y te dará retroalimentación detallada.
+      </p>
+      <div style="background:#f1f5f9;border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:0.85em;color:#475569;">
+        Pega con
+        <kbd style="background:#e2e8f0;border:1px solid #cbd5e1;border-radius:5px;padding:3px 8px;font-family:monospace;font-weight:700;">Ctrl+V</kbd>
+        &nbsp;/&nbsp;
+        <kbd style="background:#e2e8f0;border:1px solid #cbd5e1;border-radius:5px;padding:3px 8px;font-family:monospace;font-weight:700;">Cmd+V</kbd>
+        en Gemini
+      </div>
+      <div style="display:flex;gap:10px;justify-content:center;">
+        <button onclick="cerrarModal()" style="padding:10px 20px;border:1px solid #e2e8f0;border-radius:9px;background:white;color:#64748b;font-family:'DM Sans',sans-serif;font-size:0.88em;cursor:pointer;">Cancelar</button>
+        <button onclick="irAGemini()" style="padding:10px 22px;border:none;border-radius:9px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;font-family:'DM Sans',sans-serif;font-size:0.88em;font-weight:700;cursor:pointer;">Ir a Gemini &#8594;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASO 4 -->
+  <div class="step-card" style="margin-top:20px;">
+    <div class="step-hd s4">
+      <div class="step-num">4</div>
+      <div><div class="step-title">Revisa antes de enviar al profesor</div><div class="step-sub">Marca cada ítem cuando estés seguro/a</div></div>
+    </div>
+    <div class="step-body">
+      <div class="pcheck-grid">
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Usé <strong>simple present</strong> para describir la empresa y sus productos actuales.</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Usé <strong>simple past</strong> para hablar de lo que ocurrió en 2024.</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Usé <strong>be going to</strong> para proponer planes futuros.</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Incluí al menos un <strong>comparativo</strong> (X is more... than Y / -er than).</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Incluí al menos un <strong>superlativo</strong> (the most... / the -est).</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Usé al menos <strong>8 palabras del vocabulario</strong> del curso.</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Conté las palabras — mi texto tiene <strong>al menos 60</strong>.</span></label>
+        <label class="pcheck-item" onclick="ptoggleCheck(this)"><input type="checkbox"><span class="pci-text">✅ Mis ideas son <strong>originales</strong> — no copié el texto del estímulo.</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div><!-- /content -->
 </div><!-- /container -->
 
@@ -1544,6 +1821,133 @@ function loadChecklist() {
 // ── INIT ──
 calcNota();
 loadChecklist();
+
+// ── PRÁCTICA TAB ──
+function practiceWordCount() {
+  var txt = document.getElementById('practiceArea').value.trim();
+  var n = txt === '' ? 0 : txt.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
+  var el  = document.getElementById('wCount');
+  var ta  = document.getElementById('practiceArea');
+  var btn = document.getElementById('evalBtn');
+  el.textContent = n + (n === 1 ? ' palabra' : ' palabras');
+  if (n >= 60)      { el.className = 'wok';  ta.className = 'wok'; }
+  else if (n >= 35) { el.className = 'wwarn'; ta.className = 'wwarn'; }
+  else              { el.className = '';      ta.className = ''; }
+  if (n >= 1) {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor  = 'pointer';
+  } else {
+    btn.disabled = true;
+    btn.style.opacity = '0.45';
+    btn.style.cursor  = 'not-allowed';
+  }
+}
+
+function ptoggleCheck(label) {
+  var cb = label.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  label.classList.toggle('pchecked', cb.checked);
+}
+
+function buildGeminiPrompt() {
+  var studentText = document.getElementById('practiceArea').value.trim();
+  var wordCount   = studentText.split(/\s+/).filter(function(w){ return w.length > 0; }).length;
+
+  return 'Eres un profesor experto en ingl\u00e9s como lengua extranjera para nivel A2 (CEFR).\n'
+    + 'Un estudiante de nivel A2 ha escrito el siguiente texto en ingl\u00e9s.\n\n'
+    + '---\n'
+    + 'N\u00daMERO DE PALABRAS: ' + wordCount + '\n\n'
+    + 'TEXTO DEL ESTUDIANTE:\n'
+    + '"' + studentText + '"\n'
+    + '---\n\n'
+    + 'TAREA:\n'
+    + 'El estudiante deb\u00eda escribir un reporte sobre una empresa exportadora de mariscos usando datos de una tabla de ventas comparativas (Q1 2024 vs Q1 2025). El reporte debe incluir descripci\u00f3n de los productos, an\u00e1lisis de cambios en ventas y propuestas de crecimiento futuro.\n\n'
+    + 'Estructuras gramaticales requeridas:\n'
+    + '- Simple present (situaci\u00f3n actual de la empresa y sus productos)\n'
+    + '- Simple past (cambios en ventas del a\u00f1o anterior)\n'
+    + '- Be going to (planes y proyecciones futuras)\n'
+    + '- Comparativos (ej. more popular than, higher than)\n'
+    + '- Superlativos (ej. the most popular, the highest)\n'
+    + '- M\u00ednimo 8 palabras del vocabulario de comercio exterior estudiado en clase\n'
+    + '- M\u00ednimo 60 palabras\n'
+    + '- Ideas originales \u2014 no copiar el texto del est\u00edmulo\n\n'
+    + 'R\u00daBRICA OFICIAL:\n\n'
+    + '1. COHERENCIA Y EXTENSI\u00d3N (m\u00e1x. 4 pts)\n'
+    + '   Totalmente Logrado (4 pts): \u226560 palabras, todas las ideas requeridas, coherente con el est\u00edmulo.\n'
+    + '   Logrado (3.2 pts): 50\u201359 palabras, todas las ideas, coherente.\n'
+    + '   Parcialmente Logrado (2.4 pts): 30\u201349 palabras, cobertura parcial y/o alguna incoherencia.\n'
+    + '   Insuficientemente Logrado (1.2 pts): 15\u201329 palabras, baja cobertura.\n'
+    + '   No Logrado (0 pts): <15 palabras o sin coherencia.\n\n'
+    + '2. VOCABULARIO (m\u00e1x. 3 pts)\n'
+    + '   Totalmente Logrado (3 pts): \u22656 palabras del vocabulario aprendido usadas correctamente.\n'
+    + '   Logrado (2.4 pts): \u22655 palabras correctas.\n'
+    + '   Parcialmente Logrado (1.8 pts): \u22654 palabras correctas.\n'
+    + '   Insuficientemente Logrado (0.9 pts): \u22653 palabras correctas.\n'
+    + '   No Logrado (0 pts): \u22642 palabras o uso incorrecto.\n\n'
+    + '3. GRAM\u00c1TICA (m\u00e1x. 3 pts)\n'
+    + '   Totalmente Logrado (3 pts): oraciones correctas, m\u00e1x. 1 error sin impacto.\n'
+    + '   Logrado (2.4 pts): mayor\u00eda correctas, 2\u20133 errores.\n'
+    + '   Parcialmente Logrado (1.8 pts): 4\u20135 errores que dificultan parcialmente.\n'
+    + '   Insuficientemente Logrado (0.9 pts): 6\u20137 errores significativos.\n'
+    + '   No Logrado (0 pts): \u22658 errores que impiden la comprensi\u00f3n.\n\n'
+    + '4. ORTOGRAF\u00cdA (m\u00e1x. 2 pts)\n'
+    + '   Totalmente Logrado (2 pts): m\u00e1x. 2 errores sin interferencia.\n'
+    + '   Logrado (1.6 pts): 3\u20134 errores, mensaje comprensible.\n'
+    + '   Parcialmente Logrado (1.2 pts): 5\u20136 errores que afectan parcialmente.\n'
+    + '   Insuficientemente Logrado (0.6 pts): 7\u20138 errores significativos.\n'
+    + '   No Logrado (0 pts): \u22659 errores que impiden la comprensi\u00f3n.\n\n'
+    + 'POR FAVOR ENTREGA (todo en espa\u00f1ol, excepto ejemplos en ingl\u00e9s):\n\n'
+    + '\u26a0\ufe0f ADVERTENCIA DE AUTENTICIDAD (primero, siempre):\n'
+    + 'Analiza se\u00f1ales de uso de IA o traductor: vocabulario avanzado para el nivel A2, ausencia de errores t\u00edpicos de hispanohablantes, fluidez inusual, conectores avanzados, estructuras complejas inesperadas.\n'
+    + '\ud83d\udea8 si detectas se\u00f1ales / \u2705 si parece aut\u00e9ntico + justificaci\u00f3n breve.\n\n'
+    + '1. \u2705 RETROALIMENTACI\u00d3N GENERAL (2\u20133 oraciones)\n'
+    + '2. \ud83d\udccb EVALUACI\u00d3N POR CRITERIO con puntaje y justificaci\u00f3n para cada criterio\n'
+    + '3. \u274c ERRORES ESPEC\u00cdFICOS (m\u00e1ximo 4):\n'
+    + '   Error: [fragmento incorrecto] \u2192 Correcci\u00f3n: [correcto] \u2014 Explicaci\u00f3n: [breve en espa\u00f1ol]\n'
+    + '4. \u2728 SUGERENCIAS DE MEJORA (2\u20133 concretas y aplicables al nivel A2)\n'
+    + '5. \ud83d\udcac FRASE DE CIERRE motivadora';
+}
+
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function copiarParaGemini() {
+  var geminiPrompt = buildGeminiPrompt();
+
+  // Copy (Rule 23: modal always shows, independent of clipboard result)
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(geminiPrompt).catch(function() { fallbackCopy(geminiPrompt); });
+  } else {
+    fallbackCopy(geminiPrompt);
+  }
+  // Always show modal immediately, never inside .then()
+  mostrarModal();
+}
+
+function mostrarModal() {
+  var modal = document.getElementById('geminiModal');
+  modal.style.display = 'flex';
+}
+
+function cerrarModal() {
+  document.getElementById('geminiModal').style.display = 'none';
+}
+
+function irAGemini() {
+  cerrarModal();
+  window.open('https://gemini.google.com', '_blank');
+}
+
 </script>
 </body>
 </html>
