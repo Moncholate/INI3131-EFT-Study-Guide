@@ -781,16 +781,16 @@ body {
         </ul>
       </div>
 
-      <p style="font-weight:700; margin-bottom:8px;">Palabras clave por tipo de cargo (patrones generales):</p>
+      <p style="font-weight:700; margin-bottom:8px;">Función que distingue a cada cargo:</p>
       <table class="grammar-table">
-        <thead><tr><th>Característica en el texto</th><th>Cargo probable</th></tr></thead>
+        <thead><tr><th>Pregunta que responde la descripción</th><th>Cargo probable</th></tr></thead>
         <tbody>
-          <tr><td>"drives a vehicle with a lift"</td><td class="form">Forklift Operator</td></tr>
-          <tr><td>"government employee" + "checks documents and inspects cargo"</td><td class="form">Customs Officer</td></tr>
-          <tr><td>"manages ships" + "gives instructions to coordinators"</td><td class="form">Harbor Supervisor</td></tr>
-          <tr><td>"organizes and monitors loading" + "reports to the supervisor"</td><td class="form">Port Operations Coordinator</td></tr>
-          <tr><td>"outside at the docks" + "helps load and unload"</td><td class="form">Port Worker</td></tr>
-          <tr><td>"inside a large building" + "receives, stores, organizes goods"</td><td class="form">Warehouse Worker</td></tr>
+          <tr><td>¿Trabaja bajo techo recibiendo y organizando mercadería, sin estar en el muelle?</td><td class="form">Warehouse Worker</td></tr>
+          <tr><td>¿Opera una máquina de elevación para mover carga dentro del puerto o almacén?</td><td class="form">Forklift Operator</td></tr>
+          <tr><td>¿Trabaja a pie en el muelle ayudando con la carga y descarga sin vehículo propio?</td><td class="form">Port Worker</td></tr>
+          <tr><td>¿Coordina operaciones diarias y reporta a una autoridad superior del puerto?</td><td class="form">Port Operations Coordinator</td></tr>
+          <tr><td>¿Es la autoridad máxima del puerto que supervisa a coordinadores y trabajadores?</td><td class="form">Harbor Supervisor</td></tr>
+          <tr><td>¿No trabaja para la empresa privada sino para el Estado, controlando qué entra y sale del país?</td><td class="form">Customs Officer</td></tr>
         </tbody>
       </table>
 
@@ -803,8 +803,9 @@ body {
 
       <div class="warning-box">
         <div class="tip-label">⚠️ Errores frecuentes en Part A</div>
-        <span class="ex-bad">✗ Elegir por una sola palabra:</span> ver "cargo" y asignar el primer cargo que recuerdas — lee la descripción completa.<br>
-        <span class="ex-bad">✗ Confundir jerarquías:</span> el Supervisor da instrucciones al Coordinator; el Coordinator reporta al Supervisor — no al revés.
+        <span class="ex-bad">✗ Elegir por una sola palabra:</span> una palabra familiar no es suficiente — lee la descripción completa antes de asignar el título.<br>
+        <span class="ex-bad">✗ Confundir jerarquías:</span> identifica quién da instrucciones y quién las recibe — eso define la posición en la jerarquía.<br>
+        <span class="ex-bad">✗ Confundir ubicación física:</span> dentro del edificio vs. en el muelle es siempre una pista clave para diferenciar roles similares.
       </div>
     </div>
   </div>
@@ -1138,12 +1139,12 @@ body {
         No todas las celdas tendrán información — las celdas vacías no se mencionan.
       </div>
 
-      <p style="font-weight:700; margin:14px 0 8px; font-size:0.88em;">Ejemplo de tarjeta (datos completamente inventados — no del examen real):</p>
+      <p style="font-weight:700; margin:14px 0 8px; font-size:0.88em;">Ejemplo de tarjeta (datos completamente inventados — roles distintos a los del examen):</p>
       <div style="overflow-x:auto; margin:0 0 16px;">
         <table style="width:100%; border-collapse:collapse; font-size:0.82em;">
           <thead>
             <tr>
-              <th colspan="4" style="background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:9px 14px;text-align:center;border:1px solid #c7d2fe;font-size:0.9em;letter-spacing:0.5px;">FOREIGN TRADE ANALYST</th>
+              <th colspan="4" style="background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:9px 14px;text-align:center;border:1px solid #c7d2fe;font-size:0.9em;letter-spacing:0.5px;">IMPORT OPERATIONS ANALYST</th>
             </tr>
             <tr>
               <th style="background:#f1f5f9;padding:8px 12px;border:1px solid #e2e8f0;width:14%;"></th>
@@ -1183,12 +1184,12 @@ body {
       </div>
 
       <div class="example-box">
-        <div class="ex-label">✅ Mini-diálogo de ejemplo (datos inventados)</div>
-        <strong>A:</strong> "Hi! I'm Ana. I'm a Foreign Trade Analyst. I usually prepare export documents in the morning. What about you?"<br>
-        <strong>B:</strong> "Nice to meet you. I'm Carlos, a Customs Broker. I usually advise clients on regulations every day."<br>
+        <div class="ex-label">✅ Mini-diálogo de ejemplo (roles distintos a los del examen)</div>
+        <strong>A:</strong> "Hi! I'm Ana. I'm an Import Operations Analyst. I usually review supplier contracts in the morning. What about you?"<br>
+        <strong>B:</strong> "Nice to meet you. I'm Carlos, a Trade Compliance Officer. I usually prepare compliance reports every day."<br>
         <strong>A:</strong> "What did you do last week?"<br>
-        <strong>B:</strong> "Last week I traveled to the port in the morning. What are you going to do next week?"<br>
-        <strong>A:</strong> "I'm going to attend a trade conference. Are you going to work in the office?"
+        <strong>B:</strong> "Last week I attended a regional trade seminar. What are you going to do next week?"<br>
+        <strong>A:</strong> "I'm going to negotiate with a new supplier. Are you going to work in the office?"
       </div>
 
       <div class="warning-box">
@@ -1330,9 +1331,9 @@ body {
       </table>
       <div class="example-box">
         <div class="ex-label">✅ Ejemplos en contexto COMEX</div>
-        A Customs Broker <strong>usually checks</strong> import documents every morning.<br>
-        She <strong>always verifies</strong> the cargo weight before shipment.<br>
-        The logistics team <strong>sometimes works</strong> on weekends during peak season.
+        A trade analyst <strong>usually reviews</strong> supplier contracts every morning.<br>
+        She <strong>always verifies</strong> the shipment documents before sending them.<br>
+        The operations team <strong>sometimes works</strong> on weekends during peak export season.
       </div>
       <div class="warning-box">
         <span class="ex-bad">✗ She always work early.</span> → <span class="ex-good">✓ She always work<strong>s</strong> early.</span><br>
